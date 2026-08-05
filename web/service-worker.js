@@ -6,7 +6,7 @@
        instead of being stuck behind an old cache.
      • Everything else (icons, manifest) is cache-first — those are stable.
    Bump CACHE whenever you want every client to drop old caches. */
-const CACHE = 'xlectrical-nec-v3';
+const CACHE = 'xlectrical-nec-v4';
 const ASSETS = [
   './',
   './index.html',
