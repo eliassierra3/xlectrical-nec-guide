@@ -1,0 +1,35 @@
+# Netlify configuration — Xlectrical NEC Field Reference (static, installable PWA)
+#
+# The app is generated from the data in server/src/data/ by standalone/build.py,
+# which writes the ready-to-serve folder web/. That folder is committed, so
+# Netlify just publishes it as-is — no build step, nothing to break.
+#
+# To update the site: edit content, run `python3 standalone/build.py`, then
+# commit and push. Netlify redeploys automatically to the same URL.
+
+[build]
+  publish = "web"
+  command = "echo 'Static PWA — publishing web/ as-is (built by standalone/build.py).'"
+
+# Never let the CDN serve a stale shell or service worker — that's what makes
+# an installed PWA pick up new content promptly.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Icons and the QR rarely change and are safe to cache hard.
+[[headers]]
+  for = "/icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

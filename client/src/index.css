@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+@layer components {
+  .brand-gradient {
+    @apply bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500;
+  }
+  .brand-text {
+    @apply bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent;
+  }
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md hover:border-brand-300;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+}
+
+/* Thin, unobtrusive scrollbars for table overflow */
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.scroll-x::-webkit-scrollbar {
+  height: 8px;
+}
+.scroll-x::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-slate-300;
+}
