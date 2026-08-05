@@ -70,8 +70,10 @@ def main():
         # updates it live on theme toggle so the phone status bar always matches.
         "<meta name=\"theme-color\" content=\"#0f1216\" />\n"
         "<link rel=\"manifest\" href=\"manifest.webmanifest\" />\n"
-        "<link rel=\"icon\" href=\"icons/icon-192.png\" />\n"
-        "<link rel=\"apple-touch-icon\" href=\"icons/apple-touch-icon.png\" />\n"
+        # ?v=2 busts iOS's very sticky apple-touch-icon cache so re-adding to the
+        # home screen picks up the new logo. Bump the number when the icon changes.
+        "<link rel=\"icon\" href=\"icons/icon-192.png?v=2\" />\n"
+        "<link rel=\"apple-touch-icon\" href=\"icons/apple-touch-icon.png?v=2\" />\n"
         "<meta name=\"mobile-web-app-capable\" content=\"yes\" />\n"
         "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n"
         # 'default' keeps the status bar readable in BOTH light and dark themes

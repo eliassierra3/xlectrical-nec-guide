@@ -6,14 +6,14 @@
        instead of being stuck behind an old cache.
      • Everything else (icons, manifest) is cache-first — those are stable.
    Bump CACHE whenever you want every client to drop old caches. */
-const CACHE = 'xlectrical-nec-v4';
+const CACHE = 'xlectrical-nec-v5';
 const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/apple-touch-icon.png',
+  './icons/icon-192.png?v=2',
+  './icons/icon-512.png?v=2',
+  './icons/apple-touch-icon.png?v=2',
 ];
 
 self.addEventListener('install', (event) => {
