@@ -2265,7 +2265,7 @@ var UI = {
 var LANG = (function(){ try { return localStorage.getItem("xlectrical.lang")==="es"?"es":"en"; } catch(e){ return "en"; } })();
 var AUDIENCE = (function(){ try { var a = localStorage.getItem("xlectrical.aud"); return (a==="residential"||a==="commercial")?a:"all"; } catch(e){ return "all"; } })();
 var CALC = { conduit: "pvc40", insulation: "thhn", egcAmps: 20, rows: [{ size: "12", qty: 3 }] };
-var BOX = { boxKey: "4sq1.5", customVol: 21, rows: [{ size: "12", qty: 4 }], grounds: true, groundSize: "12", clamps: true, devices: 1, supports: 0 };
+var BOX = { vol: 21, rows: [{ size: "12", qty: 4 }], grounds: true, groundSize: "12", clamps: true };
 var TABLE_BY_SLUG = {}; TABLES.forEach(function(t){ TABLE_BY_SLUG[t.slug] = t; });
 SECTIONS.sort(function(a, b){ return (a.order || 0) - (b.order || 0); });
 var viewBlocks = {};    // id -> block object (for per-citation translate)
@@ -2548,22 +2548,6 @@ var PRESETS = {
 // Volume allowance required per conductor (in^3) — NEC Table 314.16(B)
 var BOX_VOL = { '18':1.50, '16':1.75, '14':2.00, '12':2.25, '10':2.50, '8':3.00, '6':5.00 };
 var BOX_COND_SIZES = ['14','12','10','8','6'];
-// Standard box volumes (in^3) — NEC Table 314.16(A). 'custom' = type the value stamped in the box.
-var BOXES = [
-  { k:'custom',    vol:0,    name:{ en:'Custom — type the in³ stamped in the box', es:'Personalizado — escribe las in³ marcadas en la caja' } },
-  { k:'3x2x2',     vol:10.0, name:{ en:'3×2×2 device box',        es:'Caja 3×2×2 (dispositivo)' } },
-  { k:'3x2x2.5',   vol:12.5, name:{ en:'3×2×2½ device box',       es:'Caja 3×2×2½ (dispositivo)' } },
-  { k:'3x2x2.75',  vol:14.0, name:{ en:'3×2×2¾ device box',       es:'Caja 3×2×2¾ (dispositivo)' } },
-  { k:'3x2x3.5',   vol:18.0, name:{ en:'3×2×3½ device box',       es:'Caja 3×2×3½ (dispositivo)' } },
-  { k:'4oct1.5',   vol:15.5, name:{ en:'4″ octagon × 1½',         es:'Octagonal 4″ × 1½' } },
-  { k:'4oct2.125', vol:21.5, name:{ en:'4″ octagon × 2⅛',         es:'Octagonal 4″ × 2⅛' } },
-  { k:'4sq1.25',   vol:18.0, name:{ en:'4″ square × 1¼',          es:'Cuadrada 4″ × 1¼' } },
-  { k:'4sq1.5',    vol:21.0, name:{ en:'4″ square × 1½',          es:'Cuadrada 4″ × 1½' } },
-  { k:'4sq2.125',  vol:30.3, name:{ en:'4″ square × 2⅛ (deep)',   es:'Cuadrada 4″ × 2⅛ (profunda)' } },
-  { k:'411sq1.5',  vol:29.5, name:{ en:'4-11/16″ square × 1½',    es:'Cuadrada 4-11/16″ × 1½' } },
-  { k:'411sq2.125',vol:42.0, name:{ en:'4-11/16″ square × 2⅛',    es:'Cuadrada 4-11/16″ × 2⅛' } }
-];
-function boxByKey(k){ for(var i=0;i<BOXES.length;i++){ if(BOXES[i].k===k) return BOXES[i]; } return BOXES[0]; }
 function computeBoxFill(){
   var vol = BOX_VOL, condFill = 0, totalCond = 0, largest = 0, largestSize = null;
   BOX.rows.forEach(function(r){
@@ -2571,30 +2555,23 @@ function computeBoxFill(){
     condFill += q*v; totalCond += q;
     if (v > largest){ largest = v; largestSize = r.size; }
   });
-  var clampFill   = (BOX.clamps && largest>0) ? largest : 0;                       // 314.16(B)(2): all clamps = 1× largest
-  var supportFill = (BOX.supports||0) * largest;                                   // 314.16(B)(3): each = 1× largest
-  var deviceFill  = (BOX.devices||0) * 2 * largest;                                // 314.16(B)(4): each yoke = 2× largest
-  var groundFill  = (BOX.grounds && largest>0) ? (vol[BOX.groundSize]||largest) : 0; // 314.16(B)(5): all grounds = 1× largest EGC
-  var required = condFill + clampFill + supportFill + deviceFill + groundFill;
-  var boxVol = BOX.boxKey==='custom' ? (BOX.customVol||0) : boxByKey(BOX.boxKey).vol;
+  var clampFill  = (BOX.clamps && largest>0) ? largest : 0;                        // 314.16(B)(2): all clamps = 1× largest
+  var groundFill = (BOX.grounds && largest>0) ? (vol[BOX.groundSize]||largest) : 0; // 314.16(B)(5): all grounds = 1× largest EGC
+  var required = condFill + clampFill + groundFill;
+  var boxVol = BOX.vol||0;
   var remaining = boxVol - required;
   var fits = boxVol>0 && required<=boxVol;
   var moreSize = largestSize || '12', moreVol = vol[moreSize] || 2.25;
   var moreFit = (fits && moreVol>0) ? Math.floor(Math.max(0,remaining)/moreVol) : 0;
-  var suggest = null;
-  for (var i=0;i<BOXES.length;i++){ var b=BOXES[i]; if(b.k!=='custom' && b.vol>=required && (!suggest || b.vol<suggest.vol)) suggest=b; }
-  return { condFill:condFill, clampFill:clampFill, supportFill:supportFill, deviceFill:deviceFill, groundFill:groundFill,
-    required:required, boxVol:boxVol, remaining:remaining, fits:fits, totalCond:totalCond, moreFit:moreFit, moreSize:moreSize,
-    suggest:suggest, fillPct: boxVol>0 ? required/boxVol*100 : 0 };
+  return { condFill:condFill, clampFill:clampFill, groundFill:groundFill, required:required, boxVol:boxVol,
+    remaining:remaining, fits:fits, totalCond:totalCond, moreFit:moreFit, moreSize:moreSize,
+    fillPct: boxVol>0 ? required/boxVol*100 : 0 };
 }
 function syncBoxCalc(){
-  var b = document.getElementById('bxc-box'); if (b) BOX.boxKey = b.value;
-  var cv = document.getElementById('bxc-customvol'); if (cv) BOX.customVol = Math.max(0, parseFloat(cv.value)||0);
+  var cv = document.getElementById('bxc-vol'); if (cv) BOX.vol = Math.max(0, parseFloat(cv.value)||0);
   var gs = document.getElementById('bxc-groundsize'); if (gs) BOX.groundSize = gs.value;
   var gc = document.getElementById('bxc-grounds'); if (gc) BOX.grounds = gc.checked;
   var cl = document.getElementById('bxc-clamps'); if (cl) BOX.clamps = cl.checked;
-  var dv = document.getElementById('bxc-devices'); if (dv) BOX.devices = Math.max(0, parseInt(dv.value,10)||0);
-  var sp = document.getElementById('bxc-supports'); if (sp) BOX.supports = Math.max(0, parseInt(sp.value,10)||0);
   var rows = [];
   Array.prototype.forEach.call(document.querySelectorAll('.bxc-row'), function(r){
     rows.push({ size: r.querySelector('.bxc-size').value, qty: Math.max(1, parseInt(r.querySelector('.bxc-qty').value,10)||1) });
@@ -2617,21 +2594,18 @@ function renderBoxResult(){
     '<div class="cr-stats"><span>'+dl(l,'Box volume','Volumen de la caja')+': <b>'+r.boxVol.toFixed(1)+' in³</b> · '+dl(l,'used','usado')+' '+r.fillPct.toFixed(0)+'%</span>'+
     (r.fits
       ? '<span>'+dl(l,'Free','Libre')+' '+Math.max(0,r.remaining).toFixed(2)+' in³ → '+dl(l,'room for','espacio para')+' <b>'+r.moreFit+'</b> '+dl(l,'more #','más #')+r.moreSize+'</span>'
-      : '<span>'+dl(l,'Smallest box that fits','Caja mínima que sirve')+': <b>'+(r.suggest?esc(tt(r.suggest.name,l))+' ('+r.suggest.vol.toFixed(1)+' in³)':dl(l,'none listed','ninguna listada'))+'</b></span>')+
+      : '<span>'+dl(l,'Use a bigger box.','Usa una caja más grande.')+'</span>')+
     '</div>';
   function bl(lbl, detail, val){ return val>0 ? '<div class="bf-x"><span>'+lbl+(detail?' <span style="color:var(--muted)">'+detail+'</span>':'')+'</span><b style="font-variant-numeric:tabular-nums">'+val.toFixed(2)+' in³</b></div>' : ''; }
   var breakdown = '<div class="cr-sizes-cap">'+dl(l,'Breakdown · 314.16(B)','Desglose · 314.16(B)')+'</div><div class="bf-extras" style="border-top:none;margin-top:6px;padding-top:0">'+
     bl(dl(l,'Conductors','Conductores'), r.totalCond+'×', r.condFill)+
-    bl(dl(l,'Devices','Dispositivos'), BOX.devices+'× · 2× '+dl(l,'largest','el mayor'), r.deviceFill)+
     bl(dl(l,'Cable clamps','Grapas'), dl(l,'all = 1','todas = 1'), r.clampFill)+
-    bl(dl(l,'Support fittings','Soportes'), BOX.supports+'×', r.supportFill)+
     bl(dl(l,'Equipment grounds','Tierras de equipo'), dl(l,'all = 1','todas = 1'), r.groundFill)+
     '</div>';
   el.innerHTML = head + breakdown;
 }
 function boxCalcView(){
   var l = LANG;
-  var boxOpts = BOXES.map(function(b){ return '<option value="'+b.k+'"'+(b.k===BOX.boxKey?' selected':'')+'>'+esc(tt(b.name,l))+(b.k!=='custom'?' — '+b.vol.toFixed(1)+' in³':'')+'</option>'; }).join('');
   var rowsHtml = BOX.rows.map(function(row, idx){
     var opts = BOX_COND_SIZES.map(function(s){ return '<option value="'+s+'"'+(s===row.size?' selected':'')+'>'+s+' AWG</option>'; }).join('');
     return '<div class="calc-row bxc-row"><select class="bxc-size">'+opts+'</select>'+
@@ -2642,24 +2616,22 @@ function boxCalcView(){
   return '<a class="crumb" href="#/">← '+esc(ui().home)+'</a>'+
     '<div class="page-head"><div class="meta"><span class="chip reference">'+esc(dl(l,'Calculator','Calculadora'))+'</span><span class="badge">NEC 314.16</span>'+
       '<span class="aud"><span class="dot res"></span><span class="dot com"></span>'+esc(ui().aud.both)+'</span></div>'+
-    '<h1 class="title">'+dl(l,'Junction Box Fill Calculator','Calculadora de llenado de caja')+'</h1>'+
-    '<p class="subtitle">'+dl(l,'How many conductors fit in a box — NEC 314.16.','Cuántos conductores caben en una caja — NEC 314.16.')+'</p></div>'+
+    '<h1 class="title">'+dl(l,'Junction Box Fill Calculator','Calculadora de llenado de caja de paso')+'</h1>'+
+    '<p class="subtitle">'+dl(l,'Pull / junction boxes — how many conductors fit (NEC 314.16).','Cajas de paso — cuántos conductores caben (NEC 314.16).')+'</p></div>'+
     '<div class="calc"><div class="calc-form">'+
-      '<label class="calc-label">'+dl(l,'Box','Caja')+'</label><select id="bxc-box" style="width:100%;margin-bottom:10px">'+boxOpts+'</select>'+
-      '<div id="bxc-custom-wrap" style="'+(BOX.boxKey==='custom'?'':'display:none')+';margin-bottom:14px"><div class="bf-x"><span>'+dl(l,'Box volume (in³)','Volumen (in³)')+'</span><input id="bxc-customvol" type="number" min="0" step="0.1" value="'+(BOX.customVol||0)+'" /></div></div>'+
+      '<label class="calc-label">'+dl(l,'Box volume (in³)','Volumen de la caja (in³)')+'</label>'+
+      '<div class="bf-x" style="margin-bottom:14px"><span style="color:var(--muted);font-size:13px">'+dl(l,'Type the number stamped inside the box','Escribe el número sellado dentro de la caja')+'</span><input id="bxc-vol" type="number" min="0" step="0.1" value="'+(BOX.vol||0)+'" /></div>'+
       '<div class="calc-rows-head"><span>'+dl(l,'Conductor','Conductor')+'</span><span>'+dl(l,'Qty','Cant.')+'</span><span></span></div>'+
       '<div id="bxc-rows">'+rowsHtml+'</div>'+
       '<button class="bxc-add">+ '+dl(l,'Add conductor size','Agregar calibre')+'</button>'+
       '<div class="bf-extras">'+
-        '<div class="bf-x"><span>'+dl(l,'Devices (switch / receptacle)','Dispositivos (switch / toma)')+'</span><input id="bxc-devices" type="number" min="0" max="12" value="'+BOX.devices+'" /></div>'+
-        '<div class="bf-x"><span>'+dl(l,'Support fittings (stud / hickey)','Soportes (perno / hickey)')+'</span><input id="bxc-supports" type="number" min="0" max="12" value="'+BOX.supports+'" /></div>'+
         '<label class="bf-x bf-check"><input id="bxc-clamps" type="checkbox"'+(BOX.clamps?' checked':'')+' /> '+dl(l,'Internal cable clamps','Grapas internas de cable')+'</label>'+
         '<label class="bf-x bf-check"><input id="bxc-grounds" type="checkbox"'+(BOX.grounds?' checked':'')+' /> '+dl(l,'Equipment grounds','Tierras de equipo')+' <select id="bxc-groundsize" style="margin-left:auto">'+gsOpts+'</select></label>'+
       '</div>'+
     '</div><div class="calc-result" id="bxc-result"></div></div>'+
     '<p class="calc-note">'+dl(l,
-      'Method — NEC 314.16(B): each conductor = one volume by its own size (Table 314.16(B)); every device yoke = 2× the largest conductor; all internal cable clamps together = 1× largest; each fixture stud/hickey = 1× largest; all equipment grounds together = 1× the largest ground. A conductor that only passes through counts once; splices made up entirely inside the box don’t count. Standard box volumes are from Table 314.16(A); nonmetallic boxes have their in³ stamped inside — pick “Custom”.',
-      'Método — NEC 314.16(B): cada conductor = un volumen según su calibre (Tabla 314.16(B)); cada yugo de dispositivo = 2× el conductor mayor; todas las grapas internas juntas = 1× el mayor; cada perno/hickey = 1× el mayor; todas las tierras juntas = 1× la tierra mayor. Un conductor que solo pasa cuenta una vez; los empalmes hechos completamente dentro no cuentan. Los volúmenes estándar son de la Tabla 314.16(A); las cajas no metálicas traen sus in³ marcadas — usa “Personalizado”.')+'</p>';
+      'For pull / junction boxes (no devices). NEC 314.16(B): each conductor = one volume by its size (Table 314.16(B)); a conductor that passes through counts once; all internal cable clamps together = 1× the largest conductor; all equipment grounds together = 1× the largest ground. Splices made up entirely inside the box don’t count. Nonmetallic boxes have their volume (in³) stamped inside — type it above.',
+      'Para cajas de paso / junction (sin dispositivos). NEC 314.16(B): cada conductor = un volumen según su calibre (Tabla 314.16(B)); un conductor que pasa cuenta una vez; todas las grapas internas juntas = 1× el conductor mayor; todas las tierras juntas = 1× la tierra mayor. Los empalmes hechos completamente dentro no cuentan. Las cajas no metálicas traen su volumen (in³) sellado dentro — escríbelo arriba.')+'</p>';
 }
 
 function computeConduitFill(){
@@ -2836,7 +2808,7 @@ function homeView(){
       '<h3>'+dl(LANG,'Conduit Fill Calculator','Calculadora de llenado de conduit')+'</h3><p>'+dl(LANG,'Minimum conduit for any mix of conductors — live.','Conduit mínimo para cualquier mezcla de conductores — en vivo.')+'</p></a>'+
       '<a class="card" href="#/calc/box"><div class="card-top"><span class="num">□</span>'+audTag(['residential','commercial'])+'</div>'+
       '<div class="card-tags"><span class="chip reference">'+esc(dl(LANG,'Calculator','Calculadora'))+'</span><span class="badge">NEC 314.16</span></div>'+
-      '<h3>'+dl(LANG,'Junction Box Fill','Llenado de caja')+'</h3><p>'+dl(LANG,'How many conductors fit in a box — live.','Cuántos conductores caben en una caja — en vivo.')+'</p></a>'+
+      '<h3>'+dl(LANG,'Junction Box Fill','Llenado de caja de paso')+'</h3><p>'+dl(LANG,'Pull / junction boxes — how many conductors fit.','Cajas de paso — cuántos conductores caben.')+'</p></a>'+
     '</div>'+
     '<div class="section-title">'+esc(ui().guide)+'</div><div class="grid">'+cards+'</div>'+
     '<div class="section-title">'+esc(ui().tables)+'</div><div class="grid">'+tcards+'</div>';
@@ -2922,7 +2894,7 @@ function renderNav(){
   });
   html += '<div class="group">'+dl(LANG,'Calculators','Calculadoras')+'</div>';
   html += '<a class="navlink'+((route==="#/calc/conduit"||route==="#/calc")?" active":"")+'" href="#/calc/conduit"><span class="n">∑</span><span class="t">'+dl(LANG,'Conduit Fill','Llenado de conduit')+'</span></a>';
-  html += '<a class="navlink'+(route.indexOf("#/calc/box")===0?" active":"")+'" href="#/calc/box"><span class="n">□</span><span class="t">'+dl(LANG,'Box Fill','Llenado de caja')+'</span></a>';
+  html += '<a class="navlink'+(route.indexOf("#/calc/box")===0?" active":"")+'" href="#/calc/box"><span class="n">□</span><span class="t">'+dl(LANG,'Box Fill','Caja de paso')+'</span></a>';
   html += '<div class="group">'+esc(ui().tables)+'</div>';
   TABLES.forEach(function(t){
     var active = route==="#/table/"+t.slug ? " active" : "";
@@ -3014,7 +2986,7 @@ document.addEventListener("input", function(e){
   if(e.target.classList && e.target.classList.contains("calc-qty")){ syncCalc(); renderCalcResult(); return; }
   if(e.target.id==="calc-egc-amps"){ var amps=Math.max(15,parseInt(e.target.value,10)||15); CALC.egcAmps=amps; var sz=document.getElementById("calc-egc-size"); if(sz) sz.textContent="#"+egcSize(amps); return; }
   if(e.target.classList && e.target.classList.contains("bxc-qty")){ syncBoxCalc(); renderBoxResult(); return; }
-  if(e.target.id==="bxc-customvol"||e.target.id==="bxc-devices"||e.target.id==="bxc-supports"){ syncBoxCalc(); renderBoxResult(); return; }
+  if(e.target.id==="bxc-vol"){ syncBoxCalc(); renderBoxResult(); return; }
   if(e.target.classList && e.target.classList.contains("tbl-filter")){
     var q = e.target.value.trim().toLowerCase();
     var tbl = e.target.closest(".tbl");
@@ -3031,7 +3003,6 @@ document.addEventListener("input", function(e){
 document.addEventListener("change", function(e){
   if(e.target.id==="calc-preset"){ var p=PRESETS[e.target.value]; if(p){ CALC.conduit=p.conduit; CALC.insulation=p.insulation; CALC.rows=p.rows.map(function(r){return {size:r.size,qty:r.qty};}); render(); } return; }
   if(e.target.id==="calc-conduit" || e.target.id==="calc-insulation" || (e.target.classList && e.target.classList.contains("calc-size"))){ syncCalc(); renderCalcResult(); }
-  if(e.target.id==="bxc-box"){ syncBoxCalc(); render(); return; }
   if(e.target.id==="bxc-clamps" || e.target.id==="bxc-grounds" || e.target.id==="bxc-groundsize" || (e.target.classList && e.target.classList.contains("bxc-size"))){ syncBoxCalc(); renderBoxResult(); return; }
 });
 document.addEventListener("keydown", function(e){ if(e.key==="Escape"){ document.getElementById("results").hidden=true; closeSidebar(); } });
