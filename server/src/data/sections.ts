@@ -6,6 +6,77 @@ import type { Section } from './types.js'
 
 export const sections: Section[] = [
   {
+    slug: 'working-space',
+    applies: ['residential', 'commercial'],
+    order: 2,
+    number: '2',
+    category: 'requirements',
+    necRef: 'NEC 110.26',
+    title: {
+      en: 'Working Space at Panels',
+      es: 'Espacio de trabajo en paneles',
+    },
+    subtitle: {
+      en: 'The clear space you must keep in front of electrical equipment.',
+      es: 'El espacio libre que debes dejar frente a los equipos eléctricos.',
+    },
+    keywords: ['110.26', 'working space', 'clearance', 'panel', 'panelboard', '30 inches', '3 feet', 'dedicated space', 'espacio de trabajo', 'despeje', 'acceso'],
+    blocks: [
+      {
+        type: 'paragraph',
+        text: {
+          en: 'Before you open any panel, NEC 110.26 requires clear working space around it — for your safety: room to stand, work, and get out fast. Three dimensions matter: depth (in front), width, and height.',
+          es: 'Antes de abrir cualquier panel, la NEC 110.26 exige espacio de trabajo libre a su alrededor — por tu seguridad: espacio para pararte, trabajar y salir rápido. Importan tres dimensiones: profundidad (al frente), ancho y altura.',
+        },
+      },
+      {
+        type: 'diagram',
+        diagram: 'working-space',
+        caption: {
+          en: 'Working space: at least 3 ft deep, 30 in wide, and 6½ ft high in front of the equipment — kept clear (no storage).',
+          es: 'Espacio de trabajo: mínimo 3 ft de profundidad, 30 in de ancho y 6½ ft de alto frente al equipo — siempre libre (sin almacenar nada).',
+        },
+      },
+      { type: 'heading', text: { en: 'The three dimensions', es: 'Las tres dimensiones' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Depth (in front): 3 ft minimum for 120/240 V and 208Y/120 V. More for higher voltage — see the table (110.26(A)(1)).', es: 'Profundidad (al frente): 3 ft mínimo para 120/240 V y 208Y/120 V. Más para voltajes altos — ver la tabla (110.26(A)(1)).' },
+          { en: 'Width: 30 in, or the width of the equipment — whichever is greater. It doesn’t have to be centered; the panel can sit anywhere within the 30 in, and doors/covers must open a full 90° (110.26(A)(2)).', es: 'Ancho: 30 in, o el ancho del equipo — lo que sea mayor. No tiene que estar centrado; el panel puede quedar en cualquier punto dentro de las 30 in, y las puertas/tapas deben abrir 90° completos (110.26(A)(2)).' },
+          { en: 'Height: clear from the floor up to 6½ ft (78 in), or the top of the equipment if it is taller (110.26(A)(3)).', es: 'Altura: libre desde el piso hasta 6½ ft (78 in), o el tope del equipo si es más alto (110.26(A)(3)).' },
+        ],
+      },
+      { type: 'heading', text: { en: 'Depth by voltage & condition — Table 110.26(A)(1)', es: 'Profundidad por voltaje y condición — Tabla 110.26(A)(1)' } },
+      { type: 'table', tableSlug: 'nec-110-26' },
+      { type: 'heading', text: { en: 'Also required', es: 'También obligatorio' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'No storage. The working space cannot be used to store anything — keep it clear at all times.', es: 'Sin almacenaje. El espacio de trabajo no se puede usar para guardar nada — mantenlo libre siempre.' },
+          { en: 'Dedicated space above: the footprint of the panel, from its top up 6 ft (or to the ceiling, whichever is lower), is reserved for electrical — no foreign piping, ducts, or equipment (110.26(E)). Sprinklers are allowed.', es: 'Espacio dedicado arriba: la huella del panel, desde su tope hacia arriba 6 ft (o hasta el techo, lo que sea menor), es solo para eléctrico — sin tuberías, ductos ni equipos ajenos (110.26(E)). Se permiten rociadores.' },
+          { en: 'Lighting is required at the working space, plus at least one entrance/exit; large gear (1200 A+) needs an exit at each end (110.26(C), (D)).', es: 'Se requiere iluminación en el espacio de trabajo y al menos una entrada/salida; los equipos grandes (1200 A+) requieren una salida en cada extremo (110.26(C), (D)).' },
+          { en: 'Panels are NOT allowed in clothes closets or over the steps of a stairway, and not in dwelling bathrooms (240.24).', es: 'Los paneles NO se permiten en clósets de ropa ni sobre los escalones de una escalera, ni en baños de viviendas (240.24).' },
+        ],
+      },
+      {
+        type: 'callout',
+        kind: 'warning',
+        text: {
+          en: 'The most common violation: things stored in front of the panel, or a panel blocked by a door or shelving. If you cannot stand in a clear 3 ft × 30 in space and open the cover a full 90°, it is not code-compliant — and it is a real hazard during a fault.',
+          es: 'La violación más común: cosas guardadas frente al panel, o un panel bloqueado por una puerta o estantes. Si no puedes pararte en un espacio libre de 3 ft × 30 in y abrir la tapa 90° completos, no cumple el código — y es un peligro real durante una falla.',
+        },
+      },
+      {
+        type: 'callout',
+        kind: 'tip',
+        text: {
+          en: 'Field memory: 3 – 30 – 78. 3 ft deep, 30 in wide, 78 in (6½ ft) high — and keep it clear.',
+          es: 'Regla de campo: 3 – 30 – 78. 3 ft de fondo, 30 in de ancho, 78 in (6½ ft) de alto — y mantenlo libre.',
+        },
+      },
+    ],
+  },
+  {
     slug: 'service-survey',
     applies: ['residential', 'commercial'],
     order: 1,
@@ -110,8 +181,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-service-sizing',
     applies: ['residential'],
-    order: 3,
-    number: '3',
+    order: 4,
+    number: '4',
     category: 'table',
     necRef: 'NEC 310.12',
     title: {
@@ -156,8 +227,8 @@ export const sections: Section[] = [
   {
     slug: 'gfci-protection',
     applies: ['residential', 'commercial'],
-    order: 7,
-    number: '7',
+    order: 8,
+    number: '8',
     category: 'requirements',
     necRef: 'NEC 210.8',
     title: {
@@ -263,8 +334,8 @@ export const sections: Section[] = [
   {
     slug: 'afci-protection',
     applies: ['residential', 'commercial'],
-    order: 8,
-    number: '8',
+    order: 9,
+    number: '9',
     category: 'requirements',
     necRef: 'NEC 210.12',
     title: {
@@ -365,8 +436,8 @@ export const sections: Section[] = [
   {
     slug: 'smoke-co-alarms',
     applies: ['residential', 'commercial'],
-    order: 15,
-    number: '15',
+    order: 16,
+    number: '16',
     category: 'requirements',
     necRef: 'NFPA 72 Ch. 29',
     title: {
@@ -474,8 +545,8 @@ export const sections: Section[] = [
   {
     slug: 'quick-reference',
     applies: ['residential'],
-    order: 5,
-    number: '5',
+    order: 6,
+    number: '6',
     category: 'reference',
     necRef: 'Quick Reference',
     title: {
@@ -510,8 +581,8 @@ export const sections: Section[] = [
   {
     slug: 'ev-charger',
     applies: ['residential', 'commercial'],
-    order: 13,
-    number: '13',
+    order: 14,
+    number: '14',
     category: 'table',
     necRef: 'NEC Article 625',
     title: {
@@ -564,8 +635,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-receptacles-circuits',
     applies: ['residential'],
-    order: 9,
-    number: '9',
+    order: 10,
+    number: '10',
     category: 'requirements',
     necRef: 'NEC 210.52',
     title: {
@@ -634,8 +705,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-load-calc',
     applies: ['residential'],
-    order: 10,
-    number: '10',
+    order: 11,
+    number: '11',
     category: 'table',
     necRef: 'NEC 220',
     title: {
@@ -688,8 +759,8 @@ export const sections: Section[] = [
   {
     slug: 'pools-spas',
     applies: ['residential', 'commercial'],
-    order: 14,
-    number: '14',
+    order: 15,
+    number: '15',
     category: 'requirements',
     necRef: 'NEC 680',
     title: {
@@ -776,8 +847,8 @@ export const sections: Section[] = [
   {
     slug: 'underground-burial',
     applies: ['residential', 'commercial'],
-    order: 12,
-    number: '12',
+    order: 13,
+    number: '13',
     category: 'table',
     necRef: 'NEC 300.5',
     title: {
@@ -819,8 +890,8 @@ export const sections: Section[] = [
   {
     slug: 'commercial-conductor-sizing',
     applies: ['commercial'],
-    order: 4,
-    number: '4',
+    order: 5,
+    number: '5',
     category: 'reference',
     necRef: 'NEC 310.16 / 110.14(C)',
     title: {
@@ -892,8 +963,8 @@ export const sections: Section[] = [
   {
     slug: 'wiring-methods',
     applies: ['residential', 'commercial'],
-    order: 2,
-    number: '2',
+    order: 3,
+    number: '3',
     category: 'reference',
     necRef: 'NEC 310 / 334 / 330',
     title: {
@@ -1064,8 +1135,8 @@ export const sections: Section[] = [
   {
     slug: 'grounding-bonding',
     applies: ['residential', 'commercial'],
-    order: 6,
-    number: '6',
+    order: 7,
+    number: '7',
     category: 'requirements',
     necRef: 'NEC Article 250',
     title: {
@@ -1221,8 +1292,8 @@ export const sections: Section[] = [
   {
     slug: 'water-heater',
     applies: ['residential', 'commercial'],
-    order: 11,
-    number: '11',
+    order: 12,
+    number: '12',
     category: 'table',
     necRef: 'NEC Article 422',
     title: {

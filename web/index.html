@@ -491,6 +491,42 @@ const TABLES = [
     keywords: ['250.66', 'grounding', 'gec', 'electrode', 'tierra', 'puesta a tierra', 'grounding electrode conductor'],
   },
   {
+    slug: 'nec-110-26',
+    applies: ['residential', 'commercial'],
+    necRef: 'NEC Table 110.26(A)(1)',
+    category: 'Safety',
+    title: {
+      en: 'Table 110.26(A)(1) — Working Space Depth',
+      es: 'Tabla 110.26(A)(1) — Profundidad del espacio de trabajo',
+    },
+    description: {
+      en: 'Minimum clear distance in front of electrical equipment, by nominal voltage to ground and condition. 120/240 V and 208Y/120 V fall in the 0–150 V row; 480Y/277 V falls in the 151–600 V row.',
+      es: 'Distancia libre mínima al frente del equipo eléctrico, según voltaje nominal a tierra y condición. 120/240 V y 208Y/120 V van en la fila 0–150 V; 480Y/277 V va en la fila 151–600 V.',
+    },
+    columns: [
+      { key: 'v', label: { en: 'Voltage to ground', es: 'Voltaje a tierra' }, align: 'center' },
+      { key: 'c1', label: { en: 'Condition 1', es: 'Condición 1' }, align: 'center' },
+      { key: 'c2', label: { en: 'Condition 2', es: 'Condición 2' }, align: 'center' },
+      { key: 'c3', label: { en: 'Condition 3', es: 'Condición 3' }, align: 'center' },
+    ],
+    rows: [
+      { v: { en: '0–150 V', es: '0–150 V' }, c1: '3 ft', c2: '3 ft', c3: '3 ft' },
+      { v: { en: '151–600 V', es: '151–600 V' }, c1: '3 ft', c2: '3½ ft', c3: '4 ft' },
+      { v: { en: '601–1000 V', es: '601–1000 V' }, c1: '3 ft', c2: '4 ft', c3: '5 ft' },
+    ],
+    notes: [
+      {
+        type: 'callout',
+        kind: 'note',
+        text: {
+          en: 'Conditions describe what is across from the live parts: (1) nothing grounded or live opposite (or guarded); (2) a grounded surface opposite — concrete, brick, or tile walls count as grounded; (3) live parts on both sides. A panel on a normal wall is usually Condition 1 or 2.',
+          es: 'Las condiciones describen qué hay enfrente de las partes vivas: (1) nada puesto a tierra ni vivo enfrente (o protegido); (2) una superficie puesta a tierra enfrente — paredes de concreto, ladrillo o teja cuentan como tierra; (3) partes vivas en ambos lados. Un panel en una pared normal suele ser Condición 1 o 2.',
+        },
+      },
+    ],
+    keywords: ['110.26', 'working space', 'clearance', 'depth', 'espacio de trabajo', 'despeje', 'panel', 'condition', 'condición'],
+  },
+  {
     slug: 'nec-310-16',
     applies: ['residential', 'commercial'],
     necRef: 'NEC 310.16',
@@ -959,6 +995,77 @@ const TABLES = [
 
 const SECTIONS = [
   {
+    slug: 'working-space',
+    applies: ['residential', 'commercial'],
+    order: 2,
+    number: '2',
+    category: 'requirements',
+    necRef: 'NEC 110.26',
+    title: {
+      en: 'Working Space at Panels',
+      es: 'Espacio de trabajo en paneles',
+    },
+    subtitle: {
+      en: 'The clear space you must keep in front of electrical equipment.',
+      es: 'El espacio libre que debes dejar frente a los equipos eléctricos.',
+    },
+    keywords: ['110.26', 'working space', 'clearance', 'panel', 'panelboard', '30 inches', '3 feet', 'dedicated space', 'espacio de trabajo', 'despeje', 'acceso'],
+    blocks: [
+      {
+        type: 'paragraph',
+        text: {
+          en: 'Before you open any panel, NEC 110.26 requires clear working space around it — for your safety: room to stand, work, and get out fast. Three dimensions matter: depth (in front), width, and height.',
+          es: 'Antes de abrir cualquier panel, la NEC 110.26 exige espacio de trabajo libre a su alrededor — por tu seguridad: espacio para pararte, trabajar y salir rápido. Importan tres dimensiones: profundidad (al frente), ancho y altura.',
+        },
+      },
+      {
+        type: 'diagram',
+        diagram: 'working-space',
+        caption: {
+          en: 'Working space: at least 3 ft deep, 30 in wide, and 6½ ft high in front of the equipment — kept clear (no storage).',
+          es: 'Espacio de trabajo: mínimo 3 ft de profundidad, 30 in de ancho y 6½ ft de alto frente al equipo — siempre libre (sin almacenar nada).',
+        },
+      },
+      { type: 'heading', text: { en: 'The three dimensions', es: 'Las tres dimensiones' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Depth (in front): 3 ft minimum for 120/240 V and 208Y/120 V. More for higher voltage — see the table (110.26(A)(1)).', es: 'Profundidad (al frente): 3 ft mínimo para 120/240 V y 208Y/120 V. Más para voltajes altos — ver la tabla (110.26(A)(1)).' },
+          { en: 'Width: 30 in, or the width of the equipment — whichever is greater. It doesn’t have to be centered; the panel can sit anywhere within the 30 in, and doors/covers must open a full 90° (110.26(A)(2)).', es: 'Ancho: 30 in, o el ancho del equipo — lo que sea mayor. No tiene que estar centrado; el panel puede quedar en cualquier punto dentro de las 30 in, y las puertas/tapas deben abrir 90° completos (110.26(A)(2)).' },
+          { en: 'Height: clear from the floor up to 6½ ft (78 in), or the top of the equipment if it is taller (110.26(A)(3)).', es: 'Altura: libre desde el piso hasta 6½ ft (78 in), o el tope del equipo si es más alto (110.26(A)(3)).' },
+        ],
+      },
+      { type: 'heading', text: { en: 'Depth by voltage & condition — Table 110.26(A)(1)', es: 'Profundidad por voltaje y condición — Tabla 110.26(A)(1)' } },
+      { type: 'table', tableSlug: 'nec-110-26' },
+      { type: 'heading', text: { en: 'Also required', es: 'También obligatorio' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'No storage. The working space cannot be used to store anything — keep it clear at all times.', es: 'Sin almacenaje. El espacio de trabajo no se puede usar para guardar nada — mantenlo libre siempre.' },
+          { en: 'Dedicated space above: the footprint of the panel, from its top up 6 ft (or to the ceiling, whichever is lower), is reserved for electrical — no foreign piping, ducts, or equipment (110.26(E)). Sprinklers are allowed.', es: 'Espacio dedicado arriba: la huella del panel, desde su tope hacia arriba 6 ft (o hasta el techo, lo que sea menor), es solo para eléctrico — sin tuberías, ductos ni equipos ajenos (110.26(E)). Se permiten rociadores.' },
+          { en: 'Lighting is required at the working space, plus at least one entrance/exit; large gear (1200 A+) needs an exit at each end (110.26(C), (D)).', es: 'Se requiere iluminación en el espacio de trabajo y al menos una entrada/salida; los equipos grandes (1200 A+) requieren una salida en cada extremo (110.26(C), (D)).' },
+          { en: 'Panels are NOT allowed in clothes closets or over the steps of a stairway, and not in dwelling bathrooms (240.24).', es: 'Los paneles NO se permiten en clósets de ropa ni sobre los escalones de una escalera, ni en baños de viviendas (240.24).' },
+        ],
+      },
+      {
+        type: 'callout',
+        kind: 'warning',
+        text: {
+          en: 'The most common violation: things stored in front of the panel, or a panel blocked by a door or shelving. If you cannot stand in a clear 3 ft × 30 in space and open the cover a full 90°, it is not code-compliant — and it is a real hazard during a fault.',
+          es: 'La violación más común: cosas guardadas frente al panel, o un panel bloqueado por una puerta o estantes. Si no puedes pararte en un espacio libre de 3 ft × 30 in y abrir la tapa 90° completos, no cumple el código — y es un peligro real durante una falla.',
+        },
+      },
+      {
+        type: 'callout',
+        kind: 'tip',
+        text: {
+          en: 'Field memory: 3 – 30 – 78. 3 ft deep, 30 in wide, 78 in (6½ ft) high — and keep it clear.',
+          es: 'Regla de campo: 3 – 30 – 78. 3 ft de fondo, 30 in de ancho, 78 in (6½ ft) de alto — y mantenlo libre.',
+        },
+      },
+    ],
+  },
+  {
     slug: 'service-survey',
     applies: ['residential', 'commercial'],
     order: 1,
@@ -1063,8 +1170,8 @@ const SECTIONS = [
   {
     slug: 'dwelling-service-sizing',
     applies: ['residential'],
-    order: 3,
-    number: '3',
+    order: 4,
+    number: '4',
     category: 'table',
     necRef: 'NEC 310.12',
     title: {
@@ -1109,8 +1216,8 @@ const SECTIONS = [
   {
     slug: 'gfci-protection',
     applies: ['residential', 'commercial'],
-    order: 7,
-    number: '7',
+    order: 8,
+    number: '8',
     category: 'requirements',
     necRef: 'NEC 210.8',
     title: {
@@ -1216,8 +1323,8 @@ const SECTIONS = [
   {
     slug: 'afci-protection',
     applies: ['residential', 'commercial'],
-    order: 8,
-    number: '8',
+    order: 9,
+    number: '9',
     category: 'requirements',
     necRef: 'NEC 210.12',
     title: {
@@ -1318,8 +1425,8 @@ const SECTIONS = [
   {
     slug: 'smoke-co-alarms',
     applies: ['residential', 'commercial'],
-    order: 15,
-    number: '15',
+    order: 16,
+    number: '16',
     category: 'requirements',
     necRef: 'NFPA 72 Ch. 29',
     title: {
@@ -1427,8 +1534,8 @@ const SECTIONS = [
   {
     slug: 'quick-reference',
     applies: ['residential'],
-    order: 5,
-    number: '5',
+    order: 6,
+    number: '6',
     category: 'reference',
     necRef: 'Quick Reference',
     title: {
@@ -1463,8 +1570,8 @@ const SECTIONS = [
   {
     slug: 'ev-charger',
     applies: ['residential', 'commercial'],
-    order: 13,
-    number: '13',
+    order: 14,
+    number: '14',
     category: 'table',
     necRef: 'NEC Article 625',
     title: {
@@ -1517,8 +1624,8 @@ const SECTIONS = [
   {
     slug: 'dwelling-receptacles-circuits',
     applies: ['residential'],
-    order: 9,
-    number: '9',
+    order: 10,
+    number: '10',
     category: 'requirements',
     necRef: 'NEC 210.52',
     title: {
@@ -1587,8 +1694,8 @@ const SECTIONS = [
   {
     slug: 'dwelling-load-calc',
     applies: ['residential'],
-    order: 10,
-    number: '10',
+    order: 11,
+    number: '11',
     category: 'table',
     necRef: 'NEC 220',
     title: {
@@ -1641,8 +1748,8 @@ const SECTIONS = [
   {
     slug: 'pools-spas',
     applies: ['residential', 'commercial'],
-    order: 14,
-    number: '14',
+    order: 15,
+    number: '15',
     category: 'requirements',
     necRef: 'NEC 680',
     title: {
@@ -1729,8 +1836,8 @@ const SECTIONS = [
   {
     slug: 'underground-burial',
     applies: ['residential', 'commercial'],
-    order: 12,
-    number: '12',
+    order: 13,
+    number: '13',
     category: 'table',
     necRef: 'NEC 300.5',
     title: {
@@ -1772,8 +1879,8 @@ const SECTIONS = [
   {
     slug: 'commercial-conductor-sizing',
     applies: ['commercial'],
-    order: 4,
-    number: '4',
+    order: 5,
+    number: '5',
     category: 'reference',
     necRef: 'NEC 310.16 / 110.14(C)',
     title: {
@@ -1845,8 +1952,8 @@ const SECTIONS = [
   {
     slug: 'wiring-methods',
     applies: ['residential', 'commercial'],
-    order: 2,
-    number: '2',
+    order: 3,
+    number: '3',
     category: 'reference',
     necRef: 'NEC 310 / 334 / 330',
     title: {
@@ -2017,8 +2124,8 @@ const SECTIONS = [
   {
     slug: 'grounding-bonding',
     applies: ['residential', 'commercial'],
-    order: 6,
-    number: '6',
+    order: 7,
+    number: '7',
     category: 'requirements',
     necRef: 'NEC Article 250',
     title: {
@@ -2174,8 +2281,8 @@ const SECTIONS = [
   {
     slug: 'water-heater',
     applies: ['residential', 'commercial'],
-    order: 11,
-    number: '11',
+    order: 12,
+    number: '12',
     category: 'table',
     necRef: 'NEC Article 422',
     title: {
@@ -2335,6 +2442,36 @@ var DIAGRAMS = {
     s += '<text x="556" y="110" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--tip)">' + dl(l,'Water-pipe bond','Unión a tubería') + '</text>';
     s += '<text x="556" y="124" text-anchor="middle" font-size="9" fill="var(--muted)">' + dl(l,'≤ 5 ft from entry · 250.68(C)','≤ 5 ft de la entrada · 250.68(C)') + '</text>';
     return '<svg viewBox="0 0 660 356" role="img" aria-label="' + dl(l,'Grounding electrode system with two rods and a water-pipe bond','Sistema de electrodos con dos varillas y unión a la tubería de agua') + '">' + s + '</svg>';
+  },
+  'working-space': function(l){
+    var s = '';
+    // ---- SIDE VIEW (depth + height) ----
+    s += '<text x="24" y="18" font-size="12" font-weight="700" fill="var(--muted)">'+dl(l,'SIDE VIEW','VISTA LATERAL')+'</text>';
+    s += '<line x1="40" y1="320" x2="322" y2="320" stroke="var(--text)" stroke-width="2"/>';
+    s += '<line x1="64" y1="60" x2="64" y2="320" stroke="var(--muted)" stroke-width="2"/>';
+    s += '<text x="44" y="336" font-size="9" fill="var(--muted)">'+dl(l,'floor','piso')+'</text>';
+    s += '<rect x="64" y="120" width="30" height="96" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="2"/>';
+    s += '<text x="79" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="var(--brand-strong)">'+dl(l,'Panel','Panel')+'</text>';
+    s += '<rect x="94" y="98" width="168" height="222" fill="var(--warn-bg)" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="6 4"/>';
+    s += '<text x="178" y="205" text-anchor="middle" font-size="10" font-weight="700" fill="var(--warn)">'+dl(l,'keep clear','mantener libre')+'</text>';
+    s += '<text x="178" y="219" text-anchor="middle" font-size="9" fill="var(--muted)">'+dl(l,'no storage','sin almacenar')+'</text>';
+    s += '<line x1="94" y1="344" x2="262" y2="344" stroke="var(--warn)" stroke-width="1.5"/><line x1="94" y1="339" x2="94" y2="349" stroke="var(--warn)" stroke-width="1.5"/><line x1="262" y1="339" x2="262" y2="349" stroke="var(--warn)" stroke-width="1.5"/>';
+    s += '<text x="178" y="360" text-anchor="middle" font-size="11" font-weight="800" fill="var(--warn)">≥ 3 ft</text>';
+    s += '<line x1="278" y1="98" x2="278" y2="320" stroke="var(--warn)" stroke-width="1.5"/><line x1="273" y1="98" x2="283" y2="98" stroke="var(--warn)" stroke-width="1.5"/><line x1="273" y1="320" x2="283" y2="320" stroke="var(--warn)" stroke-width="1.5"/>';
+    s += '<text x="286" y="212" font-size="11" font-weight="800" fill="var(--warn)">≥ 6½ ft</text>';
+    // ---- TOP VIEW (width + depth) ----
+    s += '<text x="364" y="18" font-size="12" font-weight="700" fill="var(--muted)">'+dl(l,'TOP VIEW','VISTA SUPERIOR')+'</text>';
+    s += '<line x1="390" y1="70" x2="632" y2="70" stroke="var(--muted)" stroke-width="2"/>';
+    s += '<text x="390" y="62" font-size="9" fill="var(--muted)">'+dl(l,'wall','pared')+'</text>';
+    s += '<rect x="488" y="64" width="44" height="8" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="2"/>';
+    s += '<text x="510" y="56" text-anchor="middle" font-size="10" font-weight="700" fill="var(--brand-strong)">'+dl(l,'Panel','Panel')+'</text>';
+    s += '<rect x="455" y="70" width="110" height="150" fill="var(--warn-bg)" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="6 4"/>';
+    s += '<text x="510" y="150" text-anchor="middle" font-size="10" font-weight="700" fill="var(--warn)">'+dl(l,'keep clear','mantener libre')+'</text>';
+    s += '<line x1="455" y1="242" x2="565" y2="242" stroke="var(--warn)" stroke-width="1.5"/><line x1="455" y1="237" x2="455" y2="247" stroke="var(--warn)" stroke-width="1.5"/><line x1="565" y1="237" x2="565" y2="247" stroke="var(--warn)" stroke-width="1.5"/>';
+    s += '<text x="510" y="258" text-anchor="middle" font-size="11" font-weight="800" fill="var(--warn)">≥ 30 in</text>';
+    s += '<line x1="581" y1="70" x2="581" y2="220" stroke="var(--warn)" stroke-width="1.5"/><line x1="576" y1="70" x2="586" y2="70" stroke="var(--warn)" stroke-width="1.5"/><line x1="576" y1="220" x2="586" y2="220" stroke="var(--warn)" stroke-width="1.5"/>';
+    s += '<text x="589" y="148" font-size="11" font-weight="800" fill="var(--warn)">≥ 3 ft</text>';
+    return '<svg viewBox="0 0 680 372" role="img" aria-label="'+dl(l,'Working space at a panel (110.26)','Espacio de trabajo en un panel (110.26)')+'">'+s+'</svg>';
   },
   'awg-scale': function(l){
     var sizes = [['14',0.064],['12',0.081],['10',0.102],['8',0.128],['6',0.162],['4',0.204],['2',0.258],['1/0',0.325],['2/0',0.365],['4/0',0.460]];

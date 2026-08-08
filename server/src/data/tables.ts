@@ -100,6 +100,42 @@ export const tables: RefTable[] = [
     keywords: ['250.66', 'grounding', 'gec', 'electrode', 'tierra', 'puesta a tierra', 'grounding electrode conductor'],
   },
   {
+    slug: 'nec-110-26',
+    applies: ['residential', 'commercial'],
+    necRef: 'NEC Table 110.26(A)(1)',
+    category: 'Safety',
+    title: {
+      en: 'Table 110.26(A)(1) — Working Space Depth',
+      es: 'Tabla 110.26(A)(1) — Profundidad del espacio de trabajo',
+    },
+    description: {
+      en: 'Minimum clear distance in front of electrical equipment, by nominal voltage to ground and condition. 120/240 V and 208Y/120 V fall in the 0–150 V row; 480Y/277 V falls in the 151–600 V row.',
+      es: 'Distancia libre mínima al frente del equipo eléctrico, según voltaje nominal a tierra y condición. 120/240 V y 208Y/120 V van en la fila 0–150 V; 480Y/277 V va en la fila 151–600 V.',
+    },
+    columns: [
+      { key: 'v', label: { en: 'Voltage to ground', es: 'Voltaje a tierra' }, align: 'center' },
+      { key: 'c1', label: { en: 'Condition 1', es: 'Condición 1' }, align: 'center' },
+      { key: 'c2', label: { en: 'Condition 2', es: 'Condición 2' }, align: 'center' },
+      { key: 'c3', label: { en: 'Condition 3', es: 'Condición 3' }, align: 'center' },
+    ],
+    rows: [
+      { v: { en: '0–150 V', es: '0–150 V' }, c1: '3 ft', c2: '3 ft', c3: '3 ft' },
+      { v: { en: '151–600 V', es: '151–600 V' }, c1: '3 ft', c2: '3½ ft', c3: '4 ft' },
+      { v: { en: '601–1000 V', es: '601–1000 V' }, c1: '3 ft', c2: '4 ft', c3: '5 ft' },
+    ],
+    notes: [
+      {
+        type: 'callout',
+        kind: 'note',
+        text: {
+          en: 'Conditions describe what is across from the live parts: (1) nothing grounded or live opposite (or guarded); (2) a grounded surface opposite — concrete, brick, or tile walls count as grounded; (3) live parts on both sides. A panel on a normal wall is usually Condition 1 or 2.',
+          es: 'Las condiciones describen qué hay enfrente de las partes vivas: (1) nada puesto a tierra ni vivo enfrente (o protegido); (2) una superficie puesta a tierra enfrente — paredes de concreto, ladrillo o teja cuentan como tierra; (3) partes vivas en ambos lados. Un panel en una pared normal suele ser Condición 1 o 2.',
+        },
+      },
+    ],
+    keywords: ['110.26', 'working space', 'clearance', 'depth', 'espacio de trabajo', 'despeje', 'panel', 'condition', 'condición'],
+  },
+  {
     slug: 'nec-310-16',
     applies: ['residential', 'commercial'],
     necRef: 'NEC 310.16',

@@ -478,6 +478,36 @@ var DIAGRAMS = {
     s += '<text x="556" y="124" text-anchor="middle" font-size="9" fill="var(--muted)">' + dl(l,'≤ 5 ft from entry · 250.68(C)','≤ 5 ft de la entrada · 250.68(C)') + '</text>';
     return '<svg viewBox="0 0 660 356" role="img" aria-label="' + dl(l,'Grounding electrode system with two rods and a water-pipe bond','Sistema de electrodos con dos varillas y unión a la tubería de agua') + '">' + s + '</svg>';
   },
+  'working-space': function(l){
+    var s = '';
+    // ---- SIDE VIEW (depth + height) ----
+    s += '<text x="24" y="18" font-size="12" font-weight="700" fill="var(--muted)">'+dl(l,'SIDE VIEW','VISTA LATERAL')+'</text>';
+    s += '<line x1="40" y1="320" x2="322" y2="320" stroke="var(--text)" stroke-width="2"/>';
+    s += '<line x1="64" y1="60" x2="64" y2="320" stroke="var(--muted)" stroke-width="2"/>';
+    s += '<text x="44" y="336" font-size="9" fill="var(--muted)">'+dl(l,'floor','piso')+'</text>';
+    s += '<rect x="64" y="120" width="30" height="96" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="2"/>';
+    s += '<text x="79" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="var(--brand-strong)">'+dl(l,'Panel','Panel')+'</text>';
+    s += '<rect x="94" y="98" width="168" height="222" fill="var(--warn-bg)" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="6 4"/>';
+    s += '<text x="178" y="205" text-anchor="middle" font-size="10" font-weight="700" fill="var(--warn)">'+dl(l,'keep clear','mantener libre')+'</text>';
+    s += '<text x="178" y="219" text-anchor="middle" font-size="9" fill="var(--muted)">'+dl(l,'no storage','sin almacenar')+'</text>';
+    s += '<line x1="94" y1="344" x2="262" y2="344" stroke="var(--warn)" stroke-width="1.5"/><line x1="94" y1="339" x2="94" y2="349" stroke="var(--warn)" stroke-width="1.5"/><line x1="262" y1="339" x2="262" y2="349" stroke="var(--warn)" stroke-width="1.5"/>';
+    s += '<text x="178" y="360" text-anchor="middle" font-size="11" font-weight="800" fill="var(--warn)">≥ 3 ft</text>';
+    s += '<line x1="278" y1="98" x2="278" y2="320" stroke="var(--warn)" stroke-width="1.5"/><line x1="273" y1="98" x2="283" y2="98" stroke="var(--warn)" stroke-width="1.5"/><line x1="273" y1="320" x2="283" y2="320" stroke="var(--warn)" stroke-width="1.5"/>';
+    s += '<text x="286" y="212" font-size="11" font-weight="800" fill="var(--warn)">≥ 6½ ft</text>';
+    // ---- TOP VIEW (width + depth) ----
+    s += '<text x="364" y="18" font-size="12" font-weight="700" fill="var(--muted)">'+dl(l,'TOP VIEW','VISTA SUPERIOR')+'</text>';
+    s += '<line x1="390" y1="70" x2="632" y2="70" stroke="var(--muted)" stroke-width="2"/>';
+    s += '<text x="390" y="62" font-size="9" fill="var(--muted)">'+dl(l,'wall','pared')+'</text>';
+    s += '<rect x="488" y="64" width="44" height="8" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="2"/>';
+    s += '<text x="510" y="56" text-anchor="middle" font-size="10" font-weight="700" fill="var(--brand-strong)">'+dl(l,'Panel','Panel')+'</text>';
+    s += '<rect x="455" y="70" width="110" height="150" fill="var(--warn-bg)" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="6 4"/>';
+    s += '<text x="510" y="150" text-anchor="middle" font-size="10" font-weight="700" fill="var(--warn)">'+dl(l,'keep clear','mantener libre')+'</text>';
+    s += '<line x1="455" y1="242" x2="565" y2="242" stroke="var(--warn)" stroke-width="1.5"/><line x1="455" y1="237" x2="455" y2="247" stroke="var(--warn)" stroke-width="1.5"/><line x1="565" y1="237" x2="565" y2="247" stroke="var(--warn)" stroke-width="1.5"/>';
+    s += '<text x="510" y="258" text-anchor="middle" font-size="11" font-weight="800" fill="var(--warn)">≥ 30 in</text>';
+    s += '<line x1="581" y1="70" x2="581" y2="220" stroke="var(--warn)" stroke-width="1.5"/><line x1="576" y1="70" x2="586" y2="70" stroke="var(--warn)" stroke-width="1.5"/><line x1="576" y1="220" x2="586" y2="220" stroke="var(--warn)" stroke-width="1.5"/>';
+    s += '<text x="589" y="148" font-size="11" font-weight="800" fill="var(--warn)">≥ 3 ft</text>';
+    return '<svg viewBox="0 0 680 372" role="img" aria-label="'+dl(l,'Working space at a panel (110.26)','Espacio de trabajo en un panel (110.26)')+'">'+s+'</svg>';
+  },
   'awg-scale': function(l){
     var sizes = [['14',0.064],['12',0.081],['10',0.102],['8',0.128],['6',0.162],['4',0.204],['2',0.258],['1/0',0.325],['2/0',0.365],['4/0',0.460]];
     var scale = 205, gap = 16, baseY = 140, x = 24, parts = [], prevR = 0;
