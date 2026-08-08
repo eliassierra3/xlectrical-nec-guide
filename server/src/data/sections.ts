@@ -67,6 +67,33 @@ export const sections: Section[] = [
         },
       },
       {
+        type: 'heading',
+        text: { en: 'Field question: an appliance below or in front of the panel?', es: 'Pregunta de campo: ¿un aparato debajo o frente al panel?' },
+      },
+      {
+        type: 'paragraph',
+        text: {
+          en: 'Two different rules apply. The dedicated space (110.26(E)) only reserves the space ABOVE the panel (its footprint, 6 ft up) — so “below” is not a dedicated-space problem. But the WORKING SPACE (110.26(A)) is a clear box 3 ft deep × 30 in wide × floor to 6½ ft. A tank water heater is ~20–24 in around, so directly below the panel it bulges into that box — a 110.26(A) violation. The 6 in allowance for equipment above or below is only for other electrical equipment (a disconnect, a wireway), not a water heater.',
+          es: 'Aplican dos reglas distintas. El espacio dedicado (110.26(E)) solo reserva el espacio ARRIBA del panel (su huella, 6 ft hacia arriba) — así que “debajo” no es problema de espacio dedicado. Pero el ESPACIO DE TRABAJO (110.26(A)) es una caja libre de 3 ft de fondo × 30 in de ancho × desde el piso hasta 6½ ft. Un calentador de tanque mide ~20–24 in de diámetro, así que directamente debajo del panel se mete en esa caja — una violación de la 110.26(A). El permiso de 6 in para equipo arriba o abajo es solo para otro equipo eléctrico (un disconnect, un wireway), no un calentador.',
+        },
+      },
+      {
+        type: 'diagram',
+        diagram: 'panel-obstruction',
+        caption: {
+          en: 'A tank water heater directly below the panel bulges into the 3 ft working space — a 110.26(A) violation. The whole floor-to-6½ ft space in front must stay clear.',
+          es: 'Un calentador de tanque directamente debajo del panel invade el espacio de trabajo de 3 ft — violación de la 110.26(A). Todo el espacio del piso a 6½ ft al frente debe quedar libre.',
+        },
+      },
+      {
+        type: 'callout',
+        kind: 'important',
+        text: {
+          en: 'Bottom line: keep the entire 3 ft × 30 in × 6½ ft box in front of the panel clear, from the floor up. A water heater, furnace, or gas meter inside that box has to be relocated — and a water heater next to a panel is also a leak/corrosion hazard.',
+          es: 'En resumen: mantén libre toda la caja de 3 ft × 30 in × 6½ ft frente al panel, desde el piso. Un calentador, caldera o medidor de gas dentro de esa caja hay que reubicarlo — y un calentador junto a un panel también es riesgo de fuga/corrosión.',
+        },
+      },
+      {
         type: 'callout',
         kind: 'tip',
         text: {
