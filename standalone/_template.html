@@ -245,6 +245,9 @@
   .diagram { margin: 6px 0; border: 1px solid var(--border); background: var(--surface); border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
   .diagram svg { width: 100%; height: auto; max-width: 660px; display: block; margin: 0 auto; font-family: var(--sans); }
   .diagram figcaption { text-align: center; color: var(--muted); font-size: 13px; margin-top: 10px; }
+  .fpl-fig { background: #fff; border-radius: 8px; padding: 8px; max-width: 720px; margin: 0 auto; }
+  .fpl-fig img { width: 100%; height: auto; display: block; border-radius: 4px; }
+  .fpl-src { text-align: center; font-size: 11px; color: var(--muted); margin-top: 6px; }
 
   /* Calculators */
   .calc { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; align-items: start; }
@@ -532,6 +535,10 @@ var DIAGRAMS = {
     s += '<text x="193" y="336" text-anchor="middle" font-size="11" font-weight="800" fill="var(--tip)">≥ 3 ft</text>';
     return '<svg viewBox="0 0 340 348" role="img" aria-label="'+dl(l,'Water heater below a panel blocks the working space','Un calentador debajo del panel invade el espacio de trabajo')+'">'+s+'</svg>';
   },
+  'fpl-iv7': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv7.png" alt="FPL Figure IV-7 — Outdoor meter installation, 1ph 120/240V 3-wire overhead" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-7 · © Florida Power &amp; Light</div>'; },
+  'fpl-mast': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-mast.png" alt="FPL — Service drop attachment to a pipe mast: clearances and mast height table" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-6a · © Florida Power &amp; Light</div>'; },
+  'fpl-iv11b': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv11b.png" alt="FPL Figure IV-11b — Buried service lateral: meter socket and down-pipe requirements" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-11b · © Florida Power &amp; Light</div>'; },
+  'fpl-ibt': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-ibt.png" alt="FPL Figure IV-10 — Intersystem Bonding Termination (IBT)" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-10 · © Florida Power &amp; Light</div>'; },
   'awg-scale': function(l){
     var sizes = [['14',0.064],['12',0.081],['10',0.102],['8',0.128],['6',0.162],['4',0.204],['2',0.258],['1/0',0.325],['2/0',0.365],['4/0',0.460]];
     var scale = 205, gap = 16, baseY = 140, x = 24, parts = [], prevR = 0;

@@ -104,6 +104,137 @@ export const sections: Section[] = [
     ],
   },
   {
+    slug: 'fpl-service-meter',
+    applies: ['residential', 'commercial'],
+    order: 3,
+    number: '3',
+    category: 'requirements',
+    necRef: 'FPL Electric Service Standards §IV',
+    title: {
+      en: 'FPL — Service & Meter Requirements',
+      es: 'FPL — Requisitos de acometida y medidor',
+    },
+    subtitle: {
+      en: 'Florida Power & Light rules for the service, meter, and connection — on top of the NEC.',
+      es: 'Reglas de Florida Power & Light para la acometida, el medidor y la conexión — además del NEC.',
+    },
+    keywords: ['fpl', 'florida power light', 'meter', 'service', 'downpipe', 'mast', 'urd', 'underground', 'overhead', 'bypass', 'ibt', 'meter socket', 'medidor', 'acometida', 'poste', 'downpipe'],
+    blocks: [
+      {
+        type: 'paragraph',
+        text: {
+          en: 'In FPL territory the utility has its own service and meter rules — separate from, and in addition to, the NEC. Consult FPL early (before buying or installing equipment) so the point of delivery and service location are agreed. FPL approval is NOT a substitute for the local electrical inspection. These are the points that come up most in the field; the figures below are FPL’s own (Electric Service Standards, Section IV).',
+          es: 'En territorio de FPL, la compañía tiene sus propias reglas de acometida y medidor — aparte del NEC y además de él. Consulta a FPL temprano (antes de comprar o instalar el equipo) para acordar el punto de entrega y la ubicación del servicio. La aprobación de FPL NO reemplaza la inspección eléctrica local. Estos son los puntos que más salen en campo; las figuras de abajo son de FPL (Electric Service Standards, Sección IV).',
+        },
+      },
+      { type: 'heading', text: { en: 'Who provides & owns what', es: 'Quién provee y es dueño de qué' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'FPL provides, installs, owns & maintains: the meter, the service drop (overhead) or service lateral (underground), and makes the final connection to your service-entrance conductors.', es: 'FPL provee, instala, es dueño y mantiene: el medidor, la acometida aérea o subterránea, y hace la conexión final a tus conductores de acometida.' },
+          { en: 'Customer provides, installs, owns & maintains: the service-entrance conductors, the service equipment (main disconnect), and the meter socket / can and its conduit.', es: 'El cliente provee, instala, es dueño y mantiene: los conductores de acometida, el equipo de servicio (desconexión principal), y la base/caja del medidor y su tubería.' },
+        ],
+      },
+      { type: 'heading', text: { en: 'Meter socket & mounting', es: 'Base del medidor y montaje' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Meter center height: 5 ft minimum, 6 ft maximum above finished grade.', es: 'Altura del centro del medidor: 5 ft mínimo, 6 ft máximo sobre el nivel terminado.' },
+          { en: 'Mount the socket securely and level (horizontal & vertical), through the 4 mounting holes only.', es: 'Monta la base firme y a nivel (horizontal y vertical), usando solo los 4 orificios de montaje.' },
+          { en: '3 ft minimum horizontal clearance from the meter to building openings (windows, doors, vents), and keep 36 in of clear working space in front.', es: '3 ft mínimo de separación horizontal del medidor a aberturas del edificio (ventanas, puertas, rejillas), y deja 36 in de espacio de trabajo libre al frente.' },
+          { en: 'Overhead and Underground (URD) meter sockets are DIFFERENT — buy the correct one from FPL’s Approved List (Section VII).', es: 'Las bases para servicio aéreo y subterráneo (URD) son DIFERENTES — compra la correcta de la Lista Aprobada de FPL (Sección VII).' },
+          { en: 'Bypass: all commercial installs and all residential 3-phase must use lever-bypass, jaw tension/release socket blocks. Exempt small non-critical 120/240 V ≤100 A loads: signs, temporary/construction poles, irrigation pumps, detached garages, gate openers, barns, house meters, bus stops, street lighting.', es: 'Bypass: todos los comerciales y todo residencial trifásico deben usar bloques de bypass con palanca y liberación de tensión de mordazas. Exentos: cargas pequeñas no críticas 120/240 V ≤100 A: letreros, postes temporales/de construcción, bombas de riego, garajes independientes, abre-portones, graneros, medidores de casa, paradas de bus, alumbrado público.' },
+        ],
+      },
+      {
+        type: 'diagram',
+        diagram: 'fpl-iv7',
+        caption: {
+          en: 'FPL Fig. IV-7 — standard 120/240 V overhead residential meter install: heights (5–6 ft meter, 10 ft min / 25 ft max drop), 3 ft clearance to openings, meter wiring, and bonding around knockouts (Detail A).',
+          es: 'FPL Fig. IV-7 — instalación residencial aérea 120/240 V típica: alturas (medidor 5–6 ft, acometida 10 ft mín / 25 ft máx), 3 ft a aberturas, cableado del medidor y unión alrededor de los knockouts (Detalle A).',
+        },
+      },
+      { type: 'heading', text: { en: 'Overhead service & mast', es: 'Servicio aéreo y mástil' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Point of attachment is normally within 10 ft of the building corner nearest FPL’s secondary; the drop must not cross over buildings, pools, or property you don’t own.', es: 'El punto de fijación normalmente va a menos de 10 ft de la esquina más cercana a la red secundaria de FPL; la acometida no debe cruzar sobre edificios, piscinas ni propiedad ajena.' },
+          { en: 'Vertical clearances (Fig. IV-5): 16 ft over roads/truck areas, 15 ft over driveways/parking, 12 ft over pedestrian areas; about 10 ft minimum at the attachment (150 V to ground).', es: 'Distancias verticales (Fig. IV-5): 16 ft sobre calles/tráfico de camiones, 15 ft sobre entradas/estacionamientos, 12 ft sobre áreas peatonales; ~10 ft mínimo en la fijación (150 V a tierra).' },
+          { en: 'Service mast: FPL will NOT attach the drop to an aluminum, EMT, or PVC mast — use 2 in or larger rigid galvanized (RMC) or IMC. Max mast height above the last firm support depends on pipe size (2″=2.5 ft, 2½″=4.75 ft, 3″=7.66 ft, 3½″=10.66 ft).', es: 'Mástil: FPL NO fija la acometida a un mástil de aluminio, EMT ni PVC — usa rígido galvanizado (RMC) o IMC de 2″ o mayor. La altura máx. del mástil sobre el último soporte firme depende del diámetro (2″=2.5 ft, 2½″=4.75 ft, 3″=7.66 ft, 3½″=10.66 ft).' },
+          { en: 'Identify the neutral at the weatherhead and leave about 36 in of conductor for FPL. FPL furnishes the anchor bolt (installed within 24 in of the mast).', es: 'Identifica el neutro en la cabeza de intemperie y deja unas 36 in de conductor para FPL. FPL provee el perno de anclaje (instalado a menos de 24 in del mástil).' },
+        ],
+      },
+      {
+        type: 'diagram',
+        diagram: 'fpl-mast',
+        caption: {
+          en: 'FPL Fig. IV-6a — service-drop attachment to a pipe mast: rigid galvanized/IMC only, max mast height by diameter, 36 in min clearance to obstructions.',
+          es: 'FPL Fig. IV-6a — fijación de la acometida a un mástil: solo rígido galvanizado/IMC, altura máx. del mástil por diámetro, 36 in mínimo a obstrucciones.',
+        },
+      },
+      { type: 'heading', text: { en: 'Underground service (URD)', es: 'Servicio subterráneo (URD)' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Downpipe: 2 in or 4 in rigid galvanized, IMC, or Schedule 80 PVC. Follow the bend-radius table by wire size (e.g., 1/0–4/0 → 2 in pipe, 24 in radius on 90° bends).', es: 'Downpipe (tubo de bajada): 2 in o 4 in rígido galvanizado, IMC o PVC Cédula 80. Sigue la tabla de radio de curva por calibre (ej. 1/0–4/0 → tubo de 2 in, radio de 24 in en curvas de 90°).' },
+          { en: 'Below grade: 24 in min / 36 in max (24 in preferred). The service conduit end must be at least 24 in from any permanent structure (patio, porch), aimed at FPL’s source, and capped.', es: 'Bajo tierra: 24 in mín / 36 in máx (24 in preferido). El extremo del conducto debe quedar a ≥24 in de cualquier estructura permanente (patio, porche), apuntando a la fuente de FPL, y tapado.' },
+          { en: 'Keep 5 ft horizontal clearance to any swimming pool.', es: 'Mantén 5 ft de separación horizontal a cualquier piscina.' },
+          { en: 'Keep the customer’s service-entrance conductors entirely to ONE side of the meter can, leaving the other side clear for FPL’s conductor; the FPL riser goes on the opposite side. Don’t use the center positions for the downpipe.', es: 'Mantén los conductores de acometida del cliente completamente a UN lado de la caja del medidor, dejando el otro lado libre para el conductor de FPL; el riser de FPL va del lado opuesto. No uses las posiciones centrales para el downpipe.' },
+        ],
+      },
+      {
+        type: 'diagram',
+        diagram: 'fpl-iv11b',
+        caption: {
+          en: 'FPL Fig. IV-11b — buried service lateral, meter socket & down-pipe: pipe/bend-radius table by wire size, 24 in min below grade, line/load and FPL-vs-customer conductor sides.',
+          es: 'FPL Fig. IV-11b — acometida subterránea, base del medidor y downpipe: tabla de tubo/radio por calibre, 24 in mín bajo tierra, lados de línea/carga y conductores FPL vs cliente.',
+        },
+      },
+      { type: 'heading', text: { en: 'Grounding & bonding', es: 'Puesta a tierra y unión' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Ground the installation per the NEC and local codes (FPL Section VIII).', es: 'Pon a tierra la instalación según el NEC y códigos locales (FPL Sección VIII).' },
+          { en: 'A grounding bushing is required for concentric/eccentric knockouts with retaining rings — bond around them.', es: 'Se requiere buje de tierra (grounding bushing) para knockouts concéntricos/excéntricos con anillos de retención — únelos alrededor.' },
+          { en: 'Provide an Intersystem Bonding Termination (IBT) at the meter for phone / CATV / grounds (NEC 250.94). If the ground wire is in conduit, leave an exposed section within 6 in of the bottom of the meter enclosure for the IBT.', es: 'Provee una Terminación de Unión entre Sistemas (IBT) en el medidor para teléfono / CATV / tierras (NEC 250.94). Si el cable de tierra va en tubería, deja una sección expuesta a menos de 6 in del fondo de la caja del medidor para el IBT.' },
+        ],
+      },
+      {
+        type: 'diagram',
+        diagram: 'fpl-ibt',
+        caption: {
+          en: 'FPL Fig. IV-10 — Intersystem Bonding Termination (IBT) at the meter: preferred and alternate installs for phone, CATV, and grounds.',
+          es: 'FPL Fig. IV-10 — Terminación de Unión entre Sistemas (IBT) en el medidor: instalación preferida y alterna para teléfono, CATV y tierras.',
+        },
+      },
+      { type: 'heading', text: { en: 'Clearances & separations', es: 'Separaciones y distancias' } },
+      {
+        type: 'list',
+        items: [
+          { en: '3 ft minimum between gas service equipment (vented regulators) and electric metering/termination.', es: '3 ft mínimo entre equipo de gas (reguladores ventilados) y el medidor/terminación eléctrica.' },
+          { en: '5 ft minimum from a transformer to gas service equipment; 5 ft to LP (propane) facilities — 10 ft if they are filled on site.', es: '5 ft mínimo de un transformador al equipo de gas; 5 ft a instalaciones de LP (propano) — 10 ft si se llenan en sitio.' },
+          { en: 'A temporary service pole must be at least 25 ft from a swimming pool.', es: 'Un poste de servicio temporal debe estar a por lo menos 25 ft de una piscina.' },
+        ],
+      },
+      {
+        type: 'callout',
+        kind: 'warning',
+        text: {
+          en: 'Field do’s & don’ts: don’t use a metallic fishtape to pull conductors into energized FPL-owned equipment. A main switch ahead of the meter must be sealable (door in both on & off; handle in off). On lug-type cans put the flat washer between the Belleville washer and the wire lug; K-7 / K-7T (400/600 A) lugs need the anti-rotation ridge.',
+          es: 'Sí y no en campo: no uses guía metálica (fishtape) para jalar conductores dentro de equipo energizado de FPL. Un interruptor principal delante del medidor debe ser sellable (puerta en on y off; palanca en off). En cajas tipo lug, pon la arandela plana entre la arandela Belleville y el lug del cable; los lugs K-7 / K-7T (400/600 A) requieren la cresta anti-rotación.',
+        },
+      },
+      {
+        type: 'callout',
+        kind: 'note',
+        text: {
+          en: 'Source: FPL Electric Service Standards, Section IV — Service and Meter Connections (© Florida Power & Light, rev. 04-12-16). This is a field summary — always verify against the current FPL standards and your local AHJ before installing.',
+          es: 'Fuente: FPL Electric Service Standards, Sección IV — Service and Meter Connections (© Florida Power & Light, rev. 04-12-16). Este es un resumen de campo — verifica siempre contra la versión vigente de FPL y tu inspector local (AHJ) antes de instalar.',
+        },
+      },
+    ],
+  },
+  {
     slug: 'service-survey',
     applies: ['residential', 'commercial'],
     order: 1,
@@ -208,8 +339,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-service-sizing',
     applies: ['residential'],
-    order: 4,
-    number: '4',
+    order: 5,
+    number: '5',
     category: 'table',
     necRef: 'NEC 310.12',
     title: {
@@ -254,8 +385,8 @@ export const sections: Section[] = [
   {
     slug: 'gfci-protection',
     applies: ['residential', 'commercial'],
-    order: 8,
-    number: '8',
+    order: 9,
+    number: '9',
     category: 'requirements',
     necRef: 'NEC 210.8',
     title: {
@@ -361,8 +492,8 @@ export const sections: Section[] = [
   {
     slug: 'afci-protection',
     applies: ['residential', 'commercial'],
-    order: 9,
-    number: '9',
+    order: 10,
+    number: '10',
     category: 'requirements',
     necRef: 'NEC 210.12',
     title: {
@@ -463,8 +594,8 @@ export const sections: Section[] = [
   {
     slug: 'smoke-co-alarms',
     applies: ['residential', 'commercial'],
-    order: 16,
-    number: '16',
+    order: 17,
+    number: '17',
     category: 'requirements',
     necRef: 'NFPA 72 Ch. 29',
     title: {
@@ -572,8 +703,8 @@ export const sections: Section[] = [
   {
     slug: 'quick-reference',
     applies: ['residential'],
-    order: 6,
-    number: '6',
+    order: 7,
+    number: '7',
     category: 'reference',
     necRef: 'Quick Reference',
     title: {
@@ -608,8 +739,8 @@ export const sections: Section[] = [
   {
     slug: 'ev-charger',
     applies: ['residential', 'commercial'],
-    order: 14,
-    number: '14',
+    order: 15,
+    number: '15',
     category: 'table',
     necRef: 'NEC Article 625',
     title: {
@@ -662,8 +793,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-receptacles-circuits',
     applies: ['residential'],
-    order: 10,
-    number: '10',
+    order: 11,
+    number: '11',
     category: 'requirements',
     necRef: 'NEC 210.52',
     title: {
@@ -732,8 +863,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-load-calc',
     applies: ['residential'],
-    order: 11,
-    number: '11',
+    order: 12,
+    number: '12',
     category: 'table',
     necRef: 'NEC 220',
     title: {
@@ -786,8 +917,8 @@ export const sections: Section[] = [
   {
     slug: 'pools-spas',
     applies: ['residential', 'commercial'],
-    order: 15,
-    number: '15',
+    order: 16,
+    number: '16',
     category: 'requirements',
     necRef: 'NEC 680',
     title: {
@@ -874,8 +1005,8 @@ export const sections: Section[] = [
   {
     slug: 'underground-burial',
     applies: ['residential', 'commercial'],
-    order: 13,
-    number: '13',
+    order: 14,
+    number: '14',
     category: 'table',
     necRef: 'NEC 300.5',
     title: {
@@ -917,8 +1048,8 @@ export const sections: Section[] = [
   {
     slug: 'commercial-conductor-sizing',
     applies: ['commercial'],
-    order: 5,
-    number: '5',
+    order: 6,
+    number: '6',
     category: 'reference',
     necRef: 'NEC 310.16 / 110.14(C)',
     title: {
@@ -990,8 +1121,8 @@ export const sections: Section[] = [
   {
     slug: 'wiring-methods',
     applies: ['residential', 'commercial'],
-    order: 3,
-    number: '3',
+    order: 4,
+    number: '4',
     category: 'reference',
     necRef: 'NEC 310 / 334 / 330',
     title: {
@@ -1162,8 +1293,8 @@ export const sections: Section[] = [
   {
     slug: 'grounding-bonding',
     applies: ['residential', 'commercial'],
-    order: 7,
-    number: '7',
+    order: 8,
+    number: '8',
     category: 'requirements',
     necRef: 'NEC Article 250',
     title: {
@@ -1319,8 +1450,8 @@ export const sections: Section[] = [
   {
     slug: 'water-heater',
     applies: ['residential', 'commercial'],
-    order: 12,
-    number: '12',
+    order: 13,
+    number: '13',
     category: 'table',
     necRef: 'NEC Article 422',
     title: {

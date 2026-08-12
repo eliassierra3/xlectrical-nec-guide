@@ -97,6 +97,20 @@ def main():
     with open(os.path.join(WEB, "index.html"), "w", encoding="utf-8") as f:
         f.write(pwa_doc)
 
+    # Copy the FPL reference figures into the web build (referenced by relative
+    # URL from the app, cached offline by the service worker).
+    fpl_src = os.path.join(HERE, "fpl")
+    if os.path.isdir(fpl_src):
+        fpl_dst = os.path.join(WEB, "fpl")
+        os.makedirs(fpl_dst, exist_ok=True)
+        for fn in sorted(os.listdir(fpl_src)):
+            if fn.lower().endswith(".png"):
+                with open(os.path.join(fpl_src, fn), "rb") as sf:
+                    data = sf.read()
+                with open(os.path.join(fpl_dst, fn), "wb") as df:
+                    df.write(data)
+        print("[build] copied %d FPL figures -> web/fpl/" % len(os.listdir(fpl_dst)))
+
     # Report
     print("[build] logo: %d bytes -> data URI" % os.path.getsize(LOGO))
     print("[build] wrote standalone/index.html, standalone/artifact.html, web/index.html")
