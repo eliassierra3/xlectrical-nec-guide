@@ -1174,6 +1174,33 @@ const SECTIONS = [
           es: 'FPL Fig. IV-11b — acometida subterránea, base del medidor y downpipe: tabla de tubo/radio por calibre, 24 in mín bajo tierra, lados de línea/carga y conductores FPL vs cliente.',
         },
       },
+      { type: 'heading', text: { en: 'Commercial & larger services', es: 'Comercial y servicios grandes' } },
+      {
+        type: 'list',
+        items: [
+          { en: '3-phase metering (Fig. IV-8): meter symbols — 4-wire 3φ delta = "J", wye = "L"/"N". On a 240 V delta the high leg (Hot #3) is 208 V to ground and MUST land on the RIGHT terminal; the other two hots are 120 V lighting legs. A 120/208 V 3-wire uses a 5th terminal (9 o’clock position only).', es: 'Medición trifásica (Fig. IV-8): símbolos — 4 hilos 3φ delta = "J", estrella = "L"/"N". En un delta de 240 V la pierna alta (Hot #3) es 208 V a tierra y DEBE ir en la terminal DERECHA; los otros dos vivos son piernas de 120 V. El 3 hilos 120/208 V usa una 5.ª terminal (solo en la posición de las 9).' },
+          { en: 'CT / instrument-transformer metering: when the load exceeds 600 A, or the service-entrance conductors exceed one 800 kcmil or two 500 kcmil per phase, FPL normally requires a current-transformer (CT) cabinet + an instrument-transformer-rated meter socket installed ahead of the service equipment, plus a 1½ in conduit from the cabinet to the socket. FPL provides & installs the CTs — buy the CT-rated socket, not self-contained.', es: 'Medición con CT (transformadores de instrumento): cuando la carga excede 600 A, o los conductores de acometida exceden un 800 kcmil o dos 500 kcmil por fase, FPL normalmente exige un gabinete de CT + una base tipo instrumento delante del equipo de servicio, más una tubería de 1½ in del gabinete a la base. FPL provee e instala los CT — compra la base tipo CT, no autocontenida.' },
+          { en: 'Primary metering: padmounted — customer provides a metering cabinet from FPL’s approved list (or FPL provides and bills); in a vault — FPL provides, owns & maintains the cabinet. Coordinate your primary service equipment with FPL’s feeder protection.', es: 'Medición primaria: padmounted — el cliente provee un gabinete de la lista aprobada de FPL (o FPL lo provee y cobra); en bóveda — FPL provee, es dueño y mantiene el gabinete. Coordina tu equipo de servicio primario con la protección de FPL.' },
+          { en: 'Interrupting rating: the service equipment must safely interrupt the maximum available fault current — ask FPL for the available fault current and allow for future increases.', es: 'Capacidad interruptiva: el equipo de servicio debe interrumpir con seguridad la corriente de falla máxima disponible — pídele a FPL la corriente de falla disponible y prevé aumentos futuros.' },
+          { en: 'Multiple meter centers (Fig. IV-12b): must be on FPL’s Approved List; provide sealing for each breaker (1/16 in hole in the handle); fiber/metal barriers separating line wires from metered circuits; permanent, durable ID on both meter and breaker; top-meter centerline 72 in max. Non-residential & 3φ require lever bypass.', es: 'Centros de medidores múltiples (Fig. IV-12b): deben estar en la Lista Aprobada de FPL; sellado para cada breaker (orificio de 1/16 in en la palanca); barreras de fibra/metal que separan los vivos de línea de los circuitos medidos; ID permanente y durable en medidor y breaker; línea central del medidor superior 72 in máx. No residencial y 3φ requieren bypass de palanca.' },
+        ],
+      },
+      {
+        type: 'diagram',
+        diagram: 'fpl-iv8',
+        caption: {
+          en: 'FPL Fig. IV-8 — self-contained meter wiring & meter symbols (1φ and 3φ), the delta hi-leg on the right terminal, and meter cans with bypass handles.',
+          es: 'FPL Fig. IV-8 — cableado y símbolos de medidor (1φ y 3φ), la pierna alta del delta en la terminal derecha, y cajas con palancas de bypass.',
+        },
+      },
+      {
+        type: 'diagram',
+        diagram: 'fpl-iv12b',
+        caption: {
+          en: 'FPL Fig. IV-12b — residential/commercial multiple meter center: dimensions, per-breaker sealing, line/load barriers, and permanent identification.',
+          es: 'FPL Fig. IV-12b — centro de medidores múltiples (residencial/comercial): dimensiones, sellado por breaker, barreras línea/carga e identificación permanente.',
+        },
+      },
       { type: 'heading', text: { en: 'Grounding & bonding', es: 'Puesta a tierra y unión' } },
       {
         type: 'list',
@@ -2654,6 +2681,8 @@ var DIAGRAMS = {
   'fpl-mast': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-mast.png" alt="FPL — Service drop attachment to a pipe mast: clearances and mast height table" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-6a · © Florida Power &amp; Light</div>'; },
   'fpl-iv11b': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv11b.png" alt="FPL Figure IV-11b — Buried service lateral: meter socket and down-pipe requirements" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-11b · © Florida Power &amp; Light</div>'; },
   'fpl-ibt': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-ibt.png" alt="FPL Figure IV-10 — Intersystem Bonding Termination (IBT)" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-10 · © Florida Power &amp; Light</div>'; },
+  'fpl-iv8': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv8.png" alt="FPL Figure IV-8 — self-contained meter installation: 1ph and 3ph meter symbols, delta hi-leg, bypass handles" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-8 · © Florida Power &amp; Light</div>'; },
+  'fpl-iv12b': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv12b.png" alt="FPL Figure IV-12b — multiple meter center: dimensions, sealing, barriers, identification" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-12b · © Florida Power &amp; Light</div>'; },
   'awg-scale': function(l){
     var sizes = [['14',0.064],['12',0.081],['10',0.102],['8',0.128],['6',0.162],['4',0.204],['2',0.258],['1/0',0.325],['2/0',0.365],['4/0',0.460]];
     var scale = 205, gap = 16, baseY = 140, x = 24, parts = [], prevR = 0;
