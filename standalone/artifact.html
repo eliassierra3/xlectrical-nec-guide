@@ -514,6 +514,42 @@ const TABLES = [
     keywords: ['110.26', 'working space', 'clearance', 'depth', 'espacio de trabajo', 'despeje', 'panel', 'condition', 'condición'],
   },
   {
+    slug: 'generator-sizing',
+    applies: ['residential', 'commercial'],
+    necRef: 'Sizing guide',
+    category: 'Generators',
+    title: {
+      en: 'Generator Sizing — Rule of Thumb',
+      es: 'Dimensionamiento de generador — regla general',
+    },
+    description: {
+      en: 'Typical coverage by size. Always confirm with a load calc and the manufacturer’s sizing tool — the AC starting surge usually drives the size.',
+      es: 'Cobertura típica por tamaño. Confirma siempre con un cálculo de carga y la herramienta del fabricante — el arranque del aire suele definir el tamaño.',
+    },
+    columns: [
+      { key: 'size', label: { en: 'Size', es: 'Tamaño' }, align: 'left' },
+      { key: 'runs', label: { en: 'Typically runs', es: 'Típicamente alimenta' } },
+    ],
+    rows: [
+      { size: { en: 'Portable 3–4 kW', es: 'Portátil 3–4 kW' }, runs: { en: 'Fridge/freezer, some lights & outlets, Wi-Fi, phone charging', es: 'Refri/congelador, algunas luces y tomas, Wi-Fi, cargar teléfono' } },
+      { size: { en: 'Portable 5–8 kW', es: 'Portátil 5–8 kW' }, runs: { en: 'Above + microwave, sump/well pump, one window AC', es: 'Lo anterior + microondas, bomba de sumidero/pozo, un aire de ventana' } },
+      { size: { en: 'Standby 10–14 kW', es: 'Standby 10–14 kW' }, runs: { en: 'Essentials + one central AC (with load management), well pump', es: 'Esenciales + un aire central (con manejo de cargas), bomba de pozo' } },
+      { size: { en: 'Standby 18–22 kW', es: 'Standby 18–22 kW' }, runs: { en: 'Most of a home incl. central AC and water heater (managed)', es: 'Casi toda la casa incl. aire central y calentador (con manejo)' } },
+      { size: { en: 'Standby 24–26 kW+', es: 'Standby 24–26 kW+' }, runs: { en: 'Whole house incl. a larger or two AC units (may still need load mgmt)', es: 'Casa completa incl. aire más grande o dos unidades (puede requerir manejo)' } },
+    ],
+    notes: [
+      {
+        type: 'callout',
+        kind: 'note',
+        text: {
+          en: 'Motors (AC compressor, well pump, fridge) draw 2–3× their running watts to start. Size for total running watts + the single largest starting surge. A soft-start on the AC can cut that surge and let a smaller generator run it.',
+          es: 'Los motores (compresor de aire, bomba de pozo, refri) jalan 2–3× sus watts de marcha al arrancar. Dimensiona por los watts de marcha totales + el mayor arranque individual. Un soft-start en el aire reduce ese pico y deja que un generador más chico lo mueva.',
+        },
+      },
+    ],
+    keywords: ['generator', 'sizing', 'kw', 'watts', 'surge', 'starting', 'load', 'generador', 'tamaño', 'arranque'],
+  },
+  {
     slug: 'nec-310-16',
     applies: ['residential', 'commercial'],
     necRef: 'NEC 310.16',
@@ -1354,6 +1390,71 @@ const SECTIONS = [
           es: 'Los generadores vienen en dos formas: portátil (cable → entrada de energía → interbloqueo) y respaldo permanente (transferencia automática). En ambos casos, la regla #1 es el equipo de transferencia para que el generador y la red NUNCA queden conectados al mismo tiempo — el backfeed puede electrocutar a un liniero y destruir el generador cuando regresa la red. Lo cubre el NEC Artículo 702 (sistemas de respaldo opcionales), 445 (el generador) y 250 (puesta a tierra).',
         },
       },
+      { type: 'heading', text: { en: 'Choosing the right generator', es: 'Cómo elegir el generador correcto' } },
+      {
+        type: 'paragraph',
+        text: {
+          en: 'Most of the value you add is up front — spec’ing the right unit. Walk the customer through four questions: portable or standby? what needs to stay on? how big? and what fuel?',
+          es: 'La mayor parte del valor está al inicio — especificar el equipo correcto. Lleva al cliente por cuatro preguntas: ¿portátil o standby? ¿qué debe seguir encendido? ¿de qué tamaño? y ¿qué combustible?',
+        },
+      },
+      {
+        type: 'comparison',
+        title: { en: 'Portable vs Permanent standby', es: 'Portátil vs Respaldo permanente' },
+        columns: [ { en: 'Portable', es: 'Portátil' }, { en: 'Permanent standby', es: 'Respaldo permanente' } ],
+        rows: [
+          { label: { en: 'Starts / transfers', es: 'Arranca / transfiere' }, cells: [ { en: 'You start it and flip a manual transfer/interlock', es: 'Tú lo arrancas y mueves la transferencia/interbloqueo manual' }, { en: 'Auto-starts and transfers in seconds (ATS)', es: 'Arranca y transfiere solo en segundos (ATS)' } ] },
+          { label: { en: 'Must be home?', es: '¿Debes estar en casa?' }, cells: [ { en: 'Yes', es: 'Sí' }, { en: 'No — unattended', es: 'No — desatendido' } ] },
+          { label: { en: 'Fuel', es: 'Combustible' }, cells: [ { en: 'Gasoline — a few hours per tank', es: 'Gasolina — pocas horas por tanque' }, { en: 'Natural gas or LP — long run time', es: 'Gas natural o LP — larga duración' } ] },
+          { label: { en: 'Cost', es: 'Costo' }, cells: [ { en: '$ — lowest', es: '$ — el más bajo' }, { en: '$$$ — unit + pad + gas + install', es: '$$$ — equipo + losa + gas + instalación' } ] },
+          { label: { en: 'Best for', es: 'Ideal para' }, cells: [ { en: 'Occasional outages, essentials only', es: 'Apagones ocasionales, solo lo esencial' }, { en: 'Frequent/long outages, hands-off whole-home', es: 'Apagones frecuentes/largos, casa completa sin intervención' } ] },
+        ],
+      },
+      { type: 'heading', text: { en: 'What to power & how big', es: 'Qué alimentar y de qué tamaño' } },
+      {
+        type: 'paragraph',
+        text: {
+          en: 'Decide the scope: whole-house (biggest, most expensive) or essential loads with load management (a smaller unit sheds big loads like the AC or water heater so it can cover more). To size it, add the running watts of everything that runs at once, then add the single largest starting surge — motors (AC compressor, well pump, fridge) pull 2–3× their running watts to start, and the AC usually drives the size. A soft-start on the AC can cut that surge and let a smaller generator run it. (NEC 702.4: an automatic system must have capacity for the full load, or use load management.)',
+          es: 'Define el alcance: casa completa (lo más grande y caro) o cargas esenciales con manejo de cargas (un equipo más chico corta cargas grandes como el aire o el calentador para cubrir más). Para dimensionar, suma los watts de marcha de todo lo que funciona a la vez, y súmale el mayor arranque individual — los motores (compresor de aire, bomba de pozo, refri) jalan 2–3× sus watts al arrancar, y el aire suele definir el tamaño. Un soft-start en el aire reduce ese pico y deja que un generador más chico lo mueva. (NEC 702.4: un sistema automático debe tener capacidad para toda la carga, o usar manejo de cargas.)',
+        },
+      },
+      { type: 'table', tableSlug: 'generator-sizing' },
+      { type: 'heading', text: { en: 'Fuel', es: 'Combustible' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Natural gas (NG): most convenient — utility supply, no tank, unlimited run time. Output is ~10–20% lower than LP (derate) and it needs adequate gas pressure and a properly sized line. Best where NG is available.', es: 'Gas natural (NG): lo más cómodo — suministro de la compañía, sin tanque, duración ilimitada. La salida es ~10–20% menor que con LP (derate) y necesita presión adecuada y línea bien dimensionada. Ideal donde hay NG.' },
+          { en: 'LP / propane: higher output than NG; needs a tank sized for the run time you want. Very common for standby in Florida.', es: 'LP / propano: mayor salida que NG; necesita un tanque dimensionado para la duración deseada. Muy común para standby en Florida.' },
+          { en: 'Gasoline: portables only — storage/stability limits, only a few hours per tank, and you refuel by hand.', es: 'Gasolina: solo portátiles — límites de almacenamiento/estabilidad, pocas horas por tanque, y recargas a mano.' },
+          { en: 'Diesel: mostly larger/commercial sets — efficient, but you store fuel. Less common for homes.', es: 'Diésel: sobre todo equipos grandes/comerciales — eficiente, pero almacenas combustible. Menos común en casas.' },
+        ],
+      },
+      { type: 'heading', text: { en: 'What the install requires', es: 'Qué requiere la instalación' } },
+      {
+        type: 'paragraph',
+        text: { en: 'Beyond the generator itself, quote and order all of this:', es: 'Además del generador, cotiza y pide todo esto:' },
+      },
+      {
+        type: 'list',
+        items: [
+          { en: 'The listed generator + its installation and owner’s manuals (clearances and gas specs come from there).', es: 'El generador listado + sus manuales de instalación y de usuario (de ahí salen las distancias y specs de gas).' },
+          { en: 'Transfer equipment: an ATS (standby) or a manual transfer switch / listed interlock + power inlet box (portable). Add a load-management module if you’re shedding loads.', es: 'Equipo de transferencia: un ATS (standby) o una transferencia manual / interbloqueo listado + caja de entrada (portátil). Agrega un módulo de manejo de cargas si vas a cortar cargas.' },
+          { en: 'Mounting: a level concrete or composite pad (standby); wall-mount for the inlet/ATS.', es: 'Montaje: una losa de concreto o compuesta a nivel (standby); montaje en pared para la entrada/ATS.' },
+          { en: 'Conductors + a flexible whip/conduit between the generator, the transfer switch, and the panel; the generator disconnect and overcurrent.', es: 'Conductores + una manguera/tubería flexible entre el generador, la transferencia y el panel; la desconexión y protección del generador.' },
+          { en: 'Grounding/bonding materials — and know the neutral rule (below) before you wire it.', es: 'Materiales de tierra/unión — y conoce la regla del neutro (abajo) antes de cablear.' },
+          { en: 'Fuel: a gas line sized for the BTU load, a shutoff and regulator (NG/LP), or a fuel tank — usually a licensed gas contractor does this part.', es: 'Combustible: línea de gas dimensionada por la carga en BTU, corte y regulador (NG/LP), o un tanque — normalmente un contratista de gas con licencia hace esta parte.' },
+          { en: 'For automatic standby: the starting battery + a maintainer, and the control wiring between the ATS and the generator for auto-start.', es: 'Para standby automático: la batería de arranque + un mantenedor, y el cableado de control entre el ATS y el generador para el arranque automático.' },
+        ],
+      },
+      { type: 'heading', text: { en: 'Commission & hand off', es: 'Puesta en marcha y entrega' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Test the transfer: simulate a utility outage — the generator should auto-start, transfer, then transfer back and cool down when utility returns.', es: 'Prueba la transferencia: simula un apagón — el generador debe arrancar solo, transferir, y luego regresar y enfriarse cuando vuelve la red.' },
+          { en: 'Set the weekly exercise schedule; verify the neutral bonding matches the transfer type; torque the connections; label the transfer switch and post the 702.7 sign.', es: 'Programa el ejercicio semanal; verifica que la unión del neutro concuerde con el tipo de transferencia; aprieta las conexiones; etiqueta la transferencia y coloca el letrero 702.7.' },
+          { en: 'Show the customer how to operate it and the maintenance (oil, filters, fuel, and what the ATS does automatically).', es: 'Muéstrale al cliente cómo operarlo y el mantenimiento (aceite, filtros, combustible, y qué hace el ATS automáticamente).' },
+        ],
+      },
       { type: 'heading', text: { en: 'The golden rule: transfer equipment, no backfeed', es: 'La regla de oro: transferencia, sin backfeed' } },
       {
         type: 'paragraph',
@@ -1420,14 +1521,6 @@ const SECTIONS = [
           { label: { en: 'Neutral–ground bond', es: 'Unión neutro–tierra' }, cells: [ { en: 'ONLY at the service (remove/verify the generator’s bonding jumper; use a floating-neutral portable)', es: 'SOLO en la acometida (quita/verifica el puente del generador; usa portátil de neutro flotante)' }, { en: 'At the generator (bonded-neutral)', es: 'En el generador (neutro unido)' } ] },
           { label: { en: 'Grounding electrode at gen?', es: '¿Electrodo de tierra en el gen?' }, cells: [ { en: 'No — uses the service ground', es: 'No — usa la tierra de la acometida' }, { en: 'Yes — provide one (250.30)', es: 'Sí — provee uno (250.30)' } ] },
           { label: { en: 'Typical use', es: 'Uso típico' }, cells: [ { en: 'Interlocks and most home ATS', es: 'Interbloqueos y la mayoría de ATS de casa' }, { en: 'Where the neutral must be isolated', es: 'Donde el neutro debe aislarse' } ] },
-        ],
-      },
-      { type: 'heading', text: { en: 'Sizing & capacity (702.4)', es: 'Dimensionamiento y capacidad (702.4)' } },
-      {
-        type: 'list',
-        items: [
-          { en: 'Size the generator to the load you will actually run. Load management (load-shed) lets a smaller unit back up a whole house.', es: 'Dimensiona el generador a la carga que realmente vas a usar. El manejo de cargas (load-shed) deja que un equipo más chico respalde toda la casa.' },
-          { en: 'Automatic systems: capacity for the full load, OR use load management. Manual systems: capacity for the loads you will switch on.', es: 'Sistemas automáticos: capacidad para toda la carga, O usa manejo de cargas. Sistemas manuales: capacidad para las cargas que vas a encender.' },
         ],
       },
       { type: 'heading', text: { en: 'Signs, permits & inspection', es: 'Señalización, permiso e inspección' } },

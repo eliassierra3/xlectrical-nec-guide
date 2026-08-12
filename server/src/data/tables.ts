@@ -136,6 +136,42 @@ export const tables: RefTable[] = [
     keywords: ['110.26', 'working space', 'clearance', 'depth', 'espacio de trabajo', 'despeje', 'panel', 'condition', 'condición'],
   },
   {
+    slug: 'generator-sizing',
+    applies: ['residential', 'commercial'],
+    necRef: 'Sizing guide',
+    category: 'Generators',
+    title: {
+      en: 'Generator Sizing — Rule of Thumb',
+      es: 'Dimensionamiento de generador — regla general',
+    },
+    description: {
+      en: 'Typical coverage by size. Always confirm with a load calc and the manufacturer’s sizing tool — the AC starting surge usually drives the size.',
+      es: 'Cobertura típica por tamaño. Confirma siempre con un cálculo de carga y la herramienta del fabricante — el arranque del aire suele definir el tamaño.',
+    },
+    columns: [
+      { key: 'size', label: { en: 'Size', es: 'Tamaño' }, align: 'left' },
+      { key: 'runs', label: { en: 'Typically runs', es: 'Típicamente alimenta' } },
+    ],
+    rows: [
+      { size: { en: 'Portable 3–4 kW', es: 'Portátil 3–4 kW' }, runs: { en: 'Fridge/freezer, some lights & outlets, Wi-Fi, phone charging', es: 'Refri/congelador, algunas luces y tomas, Wi-Fi, cargar teléfono' } },
+      { size: { en: 'Portable 5–8 kW', es: 'Portátil 5–8 kW' }, runs: { en: 'Above + microwave, sump/well pump, one window AC', es: 'Lo anterior + microondas, bomba de sumidero/pozo, un aire de ventana' } },
+      { size: { en: 'Standby 10–14 kW', es: 'Standby 10–14 kW' }, runs: { en: 'Essentials + one central AC (with load management), well pump', es: 'Esenciales + un aire central (con manejo de cargas), bomba de pozo' } },
+      { size: { en: 'Standby 18–22 kW', es: 'Standby 18–22 kW' }, runs: { en: 'Most of a home incl. central AC and water heater (managed)', es: 'Casi toda la casa incl. aire central y calentador (con manejo)' } },
+      { size: { en: 'Standby 24–26 kW+', es: 'Standby 24–26 kW+' }, runs: { en: 'Whole house incl. a larger or two AC units (may still need load mgmt)', es: 'Casa completa incl. aire más grande o dos unidades (puede requerir manejo)' } },
+    ],
+    notes: [
+      {
+        type: 'callout',
+        kind: 'note',
+        text: {
+          en: 'Motors (AC compressor, well pump, fridge) draw 2–3× their running watts to start. Size for total running watts + the single largest starting surge. A soft-start on the AC can cut that surge and let a smaller generator run it.',
+          es: 'Los motores (compresor de aire, bomba de pozo, refri) jalan 2–3× sus watts de marcha al arrancar. Dimensiona por los watts de marcha totales + el mayor arranque individual. Un soft-start en el aire reduce ese pico y deja que un generador más chico lo mueva.',
+        },
+      },
+    ],
+    keywords: ['generator', 'sizing', 'kw', 'watts', 'surge', 'starting', 'load', 'generador', 'tamaño', 'arranque'],
+  },
+  {
     slug: 'nec-310-16',
     applies: ['residential', 'commercial'],
     necRef: 'NEC 310.16',
