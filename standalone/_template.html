@@ -541,6 +541,31 @@ var DIAGRAMS = {
   'fpl-ibt': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-ibt.png" alt="FPL Figure IV-10 — Intersystem Bonding Termination (IBT)" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-10 · © Florida Power &amp; Light</div>'; },
   'fpl-iv8': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv8.png" alt="FPL Figure IV-8 — self-contained meter installation: 1ph and 3ph meter symbols, delta hi-leg, bypass handles" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-8 · © Florida Power &amp; Light</div>'; },
   'fpl-iv12b': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv12b.png" alt="FPL Figure IV-12b — multiple meter center: dimensions, sealing, barriers, identification" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-12b · © Florida Power &amp; Light</div>'; },
+  'breaker-fails': function(l){
+    var s = '';
+    s += '<line x1="330" y1="18" x2="330" y2="286" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>';
+    function col(cx, good){
+      var c = good ? 'var(--tip)' : 'var(--imp)', bg = good ? 'var(--tip-bg)' : 'var(--imp-bg)';
+      var ac = good ? 'var(--muted)' : c;
+      var r = '';
+      r += '<text x="'+cx+'" y="50" text-anchor="middle" font-size="11" fill="var(--muted)">'+dl(l,'overload / short','sobrecarga / corto')+'</text>';
+      r += '<line x1="'+cx+'" y1="56" x2="'+cx+'" y2="74" stroke="var(--muted)" stroke-width="2"/><path d="M'+(cx-5)+' 70 L'+cx+' 78 L'+(cx+5)+' 70 Z" fill="var(--muted)"/>';
+      r += '<rect x="'+(cx-48)+'" y="82" width="96" height="46" rx="8" fill="'+bg+'" stroke="'+c+'" stroke-width="2"/>';
+      r += '<text x="'+cx+'" y="103" text-anchor="middle" font-size="12" font-weight="800" fill="'+c+'">'+(good?dl(l,'TRIPS · off','DISPARA · off'):dl(l,'does NOT trip','NO dispara'))+'</text>';
+      r += '<text x="'+cx+'" y="119" text-anchor="middle" font-size="9" fill="var(--muted)">'+dl(l,'the breaker','el breaker')+'</text>';
+      r += '<line x1="'+cx+'" y1="128" x2="'+cx+'" y2="146" stroke="'+ac+'" stroke-width="2"/><path d="M'+(cx-5)+' 142 L'+cx+' 150 L'+(cx+5)+' 142 Z" fill="'+ac+'"/>';
+      r += '<text x="'+cx+'" y="168" text-anchor="middle" font-size="11" font-weight="'+(good?'400':'700')+'" fill="'+ac+'">'+(good?dl(l,'wire stays cool','el cable queda frío'):dl(l,'wire overheats','el cable se recalienta'))+'</text>';
+      r += '<circle cx="'+cx+'" cy="214" r="26" fill="'+bg+'" stroke="'+c+'" stroke-width="2"/>';
+      r += good ? '<path d="M'+(cx-13)+' 214 l9 9 l18 -20" fill="none" stroke="'+c+'" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'
+                : '<path d="M'+(cx-11)+' 203 l22 22 M'+(cx+11)+' 203 l-22 22" stroke="'+c+'" stroke-width="4" stroke-linecap="round"/>';
+      r += '<text x="'+cx+'" y="268" text-anchor="middle" font-size="13" font-weight="800" fill="'+c+'">'+(good?dl(l,'SAFE','SEGURO'):dl(l,'FIRE RISK','RIESGO DE INCENDIO'))+'</text>';
+      return r;
+    }
+    s += '<text x="165" y="24" text-anchor="middle" font-size="13" font-weight="800" fill="var(--tip)">'+dl(l,'A good breaker','Un breaker bueno')+'</text>';
+    s += '<text x="495" y="24" text-anchor="middle" font-size="13" font-weight="800" fill="var(--imp)">FPE · Zinsco · Challenger</text>';
+    s += col(165,true) + col(495,false);
+    return '<svg viewBox="0 0 660 286" role="img" aria-label="'+dl(l,'A good breaker trips and keeps you safe; FPE, Zinsco and Challenger breakers often do not, so the wire overheats','Un breaker bueno dispara y protege; los de FPE, Zinsco y Challenger a menudo no, y el cable se recalienta')+'">'+s+'</svg>';
+  },
   'awg-scale': function(l){
     var sizes = [['14',0.064],['12',0.081],['10',0.102],['8',0.128],['6',0.162],['4',0.204],['2',0.258],['1/0',0.325],['2/0',0.365],['4/0',0.460]];
     var scale = 205, gap = 16, baseY = 140, x = 24, parts = [], prevR = 0;

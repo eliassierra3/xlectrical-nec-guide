@@ -262,6 +262,99 @@ export const sections: Section[] = [
     ],
   },
   {
+    slug: 'hazardous-panels',
+    applies: ['residential', 'commercial'],
+    order: 4,
+    number: '4',
+    category: 'reference',
+    necRef: 'Panel Safety',
+    title: {
+      en: 'Panels to Replace — FPE, Zinsco, Challenger',
+      es: 'Paneles a reemplazar — FPE, Zinsco, Challenger',
+    },
+    subtitle: {
+      en: 'Why these brands are unsafe — and how to explain it to the customer.',
+      es: 'Por qué estas marcas son inseguras — y cómo explicárselo al cliente.',
+    },
+    keywords: ['fpe', 'federal pacific', 'stab-lok', 'zinsco', 'sylvania', 'challenger', 'panel', 'breaker', 'replace', 'fire', 'obsolete', 'reemplazar', 'incendio', 'peligro'],
+    blocks: [
+      {
+        type: 'paragraph',
+        text: {
+          en: 'Federal Pacific (FPE Stab-Lok), Zinsco, and Challenger panels share one dangerous flaw: their breakers too often fail to trip on an overload or short circuit. A breaker that won’t trip defeats the whole purpose of the panel — the wiring can overheat and start a fire. These are design/manufacturing problems, not something you can fix breaker-by-breaker, so the recommendation is to replace the panel.',
+          es: 'Los paneles Federal Pacific (FPE Stab-Lok), Zinsco y Challenger comparten una falla peligrosa: sus breakers muchas veces NO disparan ante una sobrecarga o un corto. Un breaker que no dispara anula el propósito del panel — el cableado se puede recalentar y provocar un incendio. Son problemas de diseño/fabricación, no algo que se arregle breaker por breaker, así que la recomendación es reemplazar el panel.',
+        },
+      },
+      {
+        type: 'diagram',
+        diagram: 'breaker-fails',
+        caption: {
+          en: 'A breaker’s one job is to shut off before a wire overheats. A good breaker trips and keeps you safe; these brands too often don’t — so the wire keeps heating.',
+          es: 'La única función de un breaker es cortar antes de que el cable se recaliente. Un breaker bueno dispara y protege; estas marcas muchas veces no — y el cable sigue calentándose.',
+        },
+      },
+      { type: 'heading', text: { en: 'By brand', es: 'Por marca' } },
+      {
+        type: 'comparison',
+        title: { en: 'The problem with each', es: 'El problema de cada una' },
+        columns: [
+          { en: 'Main defect', es: 'Defecto principal' },
+          { en: 'Bottom line', es: 'Conclusión' },
+        ],
+        rows: [
+          {
+            label: { en: 'Federal Pacific (Stab-Lok)', es: 'Federal Pacific (Stab-Lok)' },
+            cells: [
+              { en: 'Breakers frequently fail to trip on overload/short; some don’t fully seat on the bus. A 2002 court found FPE had falsified the UL test data — the UL label doesn’t prove it passed.', es: 'Los breakers fallan seguido en disparar ante sobrecarga/corto; algunos no asientan bien en el bus. En 2002 un tribunal halló que FPE falsificó los datos de prueba UL — la etiqueta UL no prueba que pasó.' },
+              { en: 'No reliable repair — replace the panel.', es: 'Sin reparación confiable — reemplaza el panel.' },
+            ],
+          },
+          {
+            label: { en: 'Zinsco / Sylvania', es: 'Zinsco / Sylvania' },
+            cells: [
+              { en: 'Breakers can overheat and melt/weld to the aluminum bus; a breaker can read “off” but still feed the circuit; failure to trip.', es: 'Los breakers se recalientan y se funden/sueldan al bus de aluminio; un breaker puede marcar “off” pero seguir alimentando el circuito; falla al disparar.' },
+              { en: 'Bus damage + unreliable breakers — replace.', es: 'Daño al bus + breakers no confiables — reemplaza.' },
+            ],
+          },
+          {
+            label: { en: 'Challenger', es: 'Challenger' },
+            cells: [
+              { en: 'Breaker overheating and failure-to-trip reports; bus/breaker hot-spots; certain breakers flagged in safety notices.', es: 'Reportes de recalentamiento y falla al disparar; puntos calientes en bus/breaker; ciertos breakers señalados en avisos de seguridad.' },
+              { en: 'Protection can’t be trusted — replace.', es: 'La protección no es confiable — reemplaza.' },
+            ],
+          },
+        ],
+      },
+      { type: 'heading', text: { en: 'How to explain it to the customer', es: 'Cómo explicárselo al cliente' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Start with the breaker’s job: “Each breaker is an automatic safety switch — it’s supposed to shut off power the instant a wire draws too much current, before it can overheat and catch fire.”', es: 'Empieza con la función del breaker: “Cada breaker es un interruptor de seguridad automático — debe cortar la energía en el instante en que un cable jala demasiada corriente, antes de que se recaliente y se incendie.”' },
+          { en: 'Name the problem plainly: “These brands are known in the trade for breakers that don’t shut off reliably — so the safety system you’re counting on may not work when it matters.”', es: 'Nombra el problema claro: “Estas marcas son conocidas en el oficio por breakers que no cortan de forma confiable — así que el sistema de seguridad en el que confías puede no funcionar cuando más importa.”' },
+          { en: 'Explain replacement vs repair: “It’s the panel design itself, so we can’t fix it breaker by breaker — the safe solution is a new, modern panel.”', es: 'Explica reemplazo vs reparación: “Es el diseño del panel, no se arregla breaker por breaker — la solución segura es un panel nuevo y moderno.”' },
+          { en: 'Be honest, not scary: “It may not have failed yet, but it can’t be tested or verified safe — that’s the risk. Home inspectors and many insurers flag these; some won’t renew coverage with one installed.”', es: 'Sé honesto, sin asustar: “Puede que aún no haya fallado, pero no se puede probar ni verificar como seguro — ese es el riesgo. Los inspectores y muchas aseguradoras los señalan; algunas no renuevan la póliza con uno instalado.”' },
+          { en: 'Add the upside: “A modern panel also gives you capacity for today’s loads (AC, EV charging) and proper AFCI/GFCI protection.”', es: 'Suma el beneficio: “Un panel moderno también te da capacidad para las cargas de hoy (aire, carga de EV) y protección AFCI/GFCI adecuada.”' },
+        ],
+      },
+      {
+        type: 'callout',
+        kind: 'important',
+        text: {
+          en: 'These panels are not repairable — swapping a single breaker does not fix the hazard. The safe, permanent solution is a full panel replacement.',
+          es: 'Estos paneles no son reparables — cambiar un solo breaker no elimina el peligro. La solución segura y permanente es reemplazar el panel completo.',
+        },
+      },
+      {
+        type: 'callout',
+        kind: 'note',
+        text: {
+          en: 'Keep it factual, not fear-based. The point isn’t that it will fail today — it’s that the protection can’t be verified, and the fix (a modern panel) is straightforward and adds real value.',
+          es: 'Mantenlo factual, sin miedo. El punto no es que fallará hoy — es que la protección no se puede verificar, y la solución (un panel moderno) es directa y agrega valor real.',
+        },
+      },
+    ],
+  },
+  {
     slug: 'service-survey',
     applies: ['residential', 'commercial'],
     order: 1,
@@ -366,8 +459,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-service-sizing',
     applies: ['residential'],
-    order: 5,
-    number: '5',
+    order: 6,
+    number: '6',
     category: 'table',
     necRef: 'NEC 310.12',
     title: {
@@ -412,8 +505,8 @@ export const sections: Section[] = [
   {
     slug: 'gfci-protection',
     applies: ['residential', 'commercial'],
-    order: 9,
-    number: '9',
+    order: 10,
+    number: '10',
     category: 'requirements',
     necRef: 'NEC 210.8',
     title: {
@@ -519,8 +612,8 @@ export const sections: Section[] = [
   {
     slug: 'afci-protection',
     applies: ['residential', 'commercial'],
-    order: 10,
-    number: '10',
+    order: 11,
+    number: '11',
     category: 'requirements',
     necRef: 'NEC 210.12',
     title: {
@@ -621,8 +714,8 @@ export const sections: Section[] = [
   {
     slug: 'smoke-co-alarms',
     applies: ['residential', 'commercial'],
-    order: 17,
-    number: '17',
+    order: 18,
+    number: '18',
     category: 'requirements',
     necRef: 'NFPA 72 Ch. 29',
     title: {
@@ -730,8 +823,8 @@ export const sections: Section[] = [
   {
     slug: 'quick-reference',
     applies: ['residential'],
-    order: 7,
-    number: '7',
+    order: 8,
+    number: '8',
     category: 'reference',
     necRef: 'Quick Reference',
     title: {
@@ -766,8 +859,8 @@ export const sections: Section[] = [
   {
     slug: 'ev-charger',
     applies: ['residential', 'commercial'],
-    order: 15,
-    number: '15',
+    order: 16,
+    number: '16',
     category: 'table',
     necRef: 'NEC Article 625',
     title: {
@@ -820,8 +913,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-receptacles-circuits',
     applies: ['residential'],
-    order: 11,
-    number: '11',
+    order: 12,
+    number: '12',
     category: 'requirements',
     necRef: 'NEC 210.52',
     title: {
@@ -890,8 +983,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-load-calc',
     applies: ['residential'],
-    order: 12,
-    number: '12',
+    order: 13,
+    number: '13',
     category: 'table',
     necRef: 'NEC 220',
     title: {
@@ -944,8 +1037,8 @@ export const sections: Section[] = [
   {
     slug: 'pools-spas',
     applies: ['residential', 'commercial'],
-    order: 16,
-    number: '16',
+    order: 17,
+    number: '17',
     category: 'requirements',
     necRef: 'NEC 680',
     title: {
@@ -1032,8 +1125,8 @@ export const sections: Section[] = [
   {
     slug: 'underground-burial',
     applies: ['residential', 'commercial'],
-    order: 14,
-    number: '14',
+    order: 15,
+    number: '15',
     category: 'table',
     necRef: 'NEC 300.5',
     title: {
@@ -1075,8 +1168,8 @@ export const sections: Section[] = [
   {
     slug: 'commercial-conductor-sizing',
     applies: ['commercial'],
-    order: 6,
-    number: '6',
+    order: 7,
+    number: '7',
     category: 'reference',
     necRef: 'NEC 310.16 / 110.14(C)',
     title: {
@@ -1148,8 +1241,8 @@ export const sections: Section[] = [
   {
     slug: 'wiring-methods',
     applies: ['residential', 'commercial'],
-    order: 4,
-    number: '4',
+    order: 5,
+    number: '5',
     category: 'reference',
     necRef: 'NEC 310 / 334 / 330',
     title: {
@@ -1320,8 +1413,8 @@ export const sections: Section[] = [
   {
     slug: 'grounding-bonding',
     applies: ['residential', 'commercial'],
-    order: 8,
-    number: '8',
+    order: 9,
+    number: '9',
     category: 'requirements',
     necRef: 'NEC Article 250',
     title: {
@@ -1477,8 +1570,8 @@ export const sections: Section[] = [
   {
     slug: 'water-heater',
     applies: ['residential', 'commercial'],
-    order: 13,
-    number: '13',
+    order: 14,
+    number: '14',
     category: 'table',
     necRef: 'NEC Article 422',
     title: {

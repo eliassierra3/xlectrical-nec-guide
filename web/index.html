@@ -1254,6 +1254,99 @@ const SECTIONS = [
     ],
   },
   {
+    slug: 'hazardous-panels',
+    applies: ['residential', 'commercial'],
+    order: 4,
+    number: '4',
+    category: 'reference',
+    necRef: 'Panel Safety',
+    title: {
+      en: 'Panels to Replace — FPE, Zinsco, Challenger',
+      es: 'Paneles a reemplazar — FPE, Zinsco, Challenger',
+    },
+    subtitle: {
+      en: 'Why these brands are unsafe — and how to explain it to the customer.',
+      es: 'Por qué estas marcas son inseguras — y cómo explicárselo al cliente.',
+    },
+    keywords: ['fpe', 'federal pacific', 'stab-lok', 'zinsco', 'sylvania', 'challenger', 'panel', 'breaker', 'replace', 'fire', 'obsolete', 'reemplazar', 'incendio', 'peligro'],
+    blocks: [
+      {
+        type: 'paragraph',
+        text: {
+          en: 'Federal Pacific (FPE Stab-Lok), Zinsco, and Challenger panels share one dangerous flaw: their breakers too often fail to trip on an overload or short circuit. A breaker that won’t trip defeats the whole purpose of the panel — the wiring can overheat and start a fire. These are design/manufacturing problems, not something you can fix breaker-by-breaker, so the recommendation is to replace the panel.',
+          es: 'Los paneles Federal Pacific (FPE Stab-Lok), Zinsco y Challenger comparten una falla peligrosa: sus breakers muchas veces NO disparan ante una sobrecarga o un corto. Un breaker que no dispara anula el propósito del panel — el cableado se puede recalentar y provocar un incendio. Son problemas de diseño/fabricación, no algo que se arregle breaker por breaker, así que la recomendación es reemplazar el panel.',
+        },
+      },
+      {
+        type: 'diagram',
+        diagram: 'breaker-fails',
+        caption: {
+          en: 'A breaker’s one job is to shut off before a wire overheats. A good breaker trips and keeps you safe; these brands too often don’t — so the wire keeps heating.',
+          es: 'La única función de un breaker es cortar antes de que el cable se recaliente. Un breaker bueno dispara y protege; estas marcas muchas veces no — y el cable sigue calentándose.',
+        },
+      },
+      { type: 'heading', text: { en: 'By brand', es: 'Por marca' } },
+      {
+        type: 'comparison',
+        title: { en: 'The problem with each', es: 'El problema de cada una' },
+        columns: [
+          { en: 'Main defect', es: 'Defecto principal' },
+          { en: 'Bottom line', es: 'Conclusión' },
+        ],
+        rows: [
+          {
+            label: { en: 'Federal Pacific (Stab-Lok)', es: 'Federal Pacific (Stab-Lok)' },
+            cells: [
+              { en: 'Breakers frequently fail to trip on overload/short; some don’t fully seat on the bus. A 2002 court found FPE had falsified the UL test data — the UL label doesn’t prove it passed.', es: 'Los breakers fallan seguido en disparar ante sobrecarga/corto; algunos no asientan bien en el bus. En 2002 un tribunal halló que FPE falsificó los datos de prueba UL — la etiqueta UL no prueba que pasó.' },
+              { en: 'No reliable repair — replace the panel.', es: 'Sin reparación confiable — reemplaza el panel.' },
+            ],
+          },
+          {
+            label: { en: 'Zinsco / Sylvania', es: 'Zinsco / Sylvania' },
+            cells: [
+              { en: 'Breakers can overheat and melt/weld to the aluminum bus; a breaker can read “off” but still feed the circuit; failure to trip.', es: 'Los breakers se recalientan y se funden/sueldan al bus de aluminio; un breaker puede marcar “off” pero seguir alimentando el circuito; falla al disparar.' },
+              { en: 'Bus damage + unreliable breakers — replace.', es: 'Daño al bus + breakers no confiables — reemplaza.' },
+            ],
+          },
+          {
+            label: { en: 'Challenger', es: 'Challenger' },
+            cells: [
+              { en: 'Breaker overheating and failure-to-trip reports; bus/breaker hot-spots; certain breakers flagged in safety notices.', es: 'Reportes de recalentamiento y falla al disparar; puntos calientes en bus/breaker; ciertos breakers señalados en avisos de seguridad.' },
+              { en: 'Protection can’t be trusted — replace.', es: 'La protección no es confiable — reemplaza.' },
+            ],
+          },
+        ],
+      },
+      { type: 'heading', text: { en: 'How to explain it to the customer', es: 'Cómo explicárselo al cliente' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Start with the breaker’s job: “Each breaker is an automatic safety switch — it’s supposed to shut off power the instant a wire draws too much current, before it can overheat and catch fire.”', es: 'Empieza con la función del breaker: “Cada breaker es un interruptor de seguridad automático — debe cortar la energía en el instante en que un cable jala demasiada corriente, antes de que se recaliente y se incendie.”' },
+          { en: 'Name the problem plainly: “These brands are known in the trade for breakers that don’t shut off reliably — so the safety system you’re counting on may not work when it matters.”', es: 'Nombra el problema claro: “Estas marcas son conocidas en el oficio por breakers que no cortan de forma confiable — así que el sistema de seguridad en el que confías puede no funcionar cuando más importa.”' },
+          { en: 'Explain replacement vs repair: “It’s the panel design itself, so we can’t fix it breaker by breaker — the safe solution is a new, modern panel.”', es: 'Explica reemplazo vs reparación: “Es el diseño del panel, no se arregla breaker por breaker — la solución segura es un panel nuevo y moderno.”' },
+          { en: 'Be honest, not scary: “It may not have failed yet, but it can’t be tested or verified safe — that’s the risk. Home inspectors and many insurers flag these; some won’t renew coverage with one installed.”', es: 'Sé honesto, sin asustar: “Puede que aún no haya fallado, pero no se puede probar ni verificar como seguro — ese es el riesgo. Los inspectores y muchas aseguradoras los señalan; algunas no renuevan la póliza con uno instalado.”' },
+          { en: 'Add the upside: “A modern panel also gives you capacity for today’s loads (AC, EV charging) and proper AFCI/GFCI protection.”', es: 'Suma el beneficio: “Un panel moderno también te da capacidad para las cargas de hoy (aire, carga de EV) y protección AFCI/GFCI adecuada.”' },
+        ],
+      },
+      {
+        type: 'callout',
+        kind: 'important',
+        text: {
+          en: 'These panels are not repairable — swapping a single breaker does not fix the hazard. The safe, permanent solution is a full panel replacement.',
+          es: 'Estos paneles no son reparables — cambiar un solo breaker no elimina el peligro. La solución segura y permanente es reemplazar el panel completo.',
+        },
+      },
+      {
+        type: 'callout',
+        kind: 'note',
+        text: {
+          en: 'Keep it factual, not fear-based. The point isn’t that it will fail today — it’s that the protection can’t be verified, and the fix (a modern panel) is straightforward and adds real value.',
+          es: 'Mantenlo factual, sin miedo. El punto no es que fallará hoy — es que la protección no se puede verificar, y la solución (un panel moderno) es directa y agrega valor real.',
+        },
+      },
+    ],
+  },
+  {
     slug: 'service-survey',
     applies: ['residential', 'commercial'],
     order: 1,
@@ -1358,8 +1451,8 @@ const SECTIONS = [
   {
     slug: 'dwelling-service-sizing',
     applies: ['residential'],
-    order: 5,
-    number: '5',
+    order: 6,
+    number: '6',
     category: 'table',
     necRef: 'NEC 310.12',
     title: {
@@ -1404,8 +1497,8 @@ const SECTIONS = [
   {
     slug: 'gfci-protection',
     applies: ['residential', 'commercial'],
-    order: 9,
-    number: '9',
+    order: 10,
+    number: '10',
     category: 'requirements',
     necRef: 'NEC 210.8',
     title: {
@@ -1511,8 +1604,8 @@ const SECTIONS = [
   {
     slug: 'afci-protection',
     applies: ['residential', 'commercial'],
-    order: 10,
-    number: '10',
+    order: 11,
+    number: '11',
     category: 'requirements',
     necRef: 'NEC 210.12',
     title: {
@@ -1613,8 +1706,8 @@ const SECTIONS = [
   {
     slug: 'smoke-co-alarms',
     applies: ['residential', 'commercial'],
-    order: 17,
-    number: '17',
+    order: 18,
+    number: '18',
     category: 'requirements',
     necRef: 'NFPA 72 Ch. 29',
     title: {
@@ -1722,8 +1815,8 @@ const SECTIONS = [
   {
     slug: 'quick-reference',
     applies: ['residential'],
-    order: 7,
-    number: '7',
+    order: 8,
+    number: '8',
     category: 'reference',
     necRef: 'Quick Reference',
     title: {
@@ -1758,8 +1851,8 @@ const SECTIONS = [
   {
     slug: 'ev-charger',
     applies: ['residential', 'commercial'],
-    order: 15,
-    number: '15',
+    order: 16,
+    number: '16',
     category: 'table',
     necRef: 'NEC Article 625',
     title: {
@@ -1812,8 +1905,8 @@ const SECTIONS = [
   {
     slug: 'dwelling-receptacles-circuits',
     applies: ['residential'],
-    order: 11,
-    number: '11',
+    order: 12,
+    number: '12',
     category: 'requirements',
     necRef: 'NEC 210.52',
     title: {
@@ -1882,8 +1975,8 @@ const SECTIONS = [
   {
     slug: 'dwelling-load-calc',
     applies: ['residential'],
-    order: 12,
-    number: '12',
+    order: 13,
+    number: '13',
     category: 'table',
     necRef: 'NEC 220',
     title: {
@@ -1936,8 +2029,8 @@ const SECTIONS = [
   {
     slug: 'pools-spas',
     applies: ['residential', 'commercial'],
-    order: 16,
-    number: '16',
+    order: 17,
+    number: '17',
     category: 'requirements',
     necRef: 'NEC 680',
     title: {
@@ -2024,8 +2117,8 @@ const SECTIONS = [
   {
     slug: 'underground-burial',
     applies: ['residential', 'commercial'],
-    order: 14,
-    number: '14',
+    order: 15,
+    number: '15',
     category: 'table',
     necRef: 'NEC 300.5',
     title: {
@@ -2067,8 +2160,8 @@ const SECTIONS = [
   {
     slug: 'commercial-conductor-sizing',
     applies: ['commercial'],
-    order: 6,
-    number: '6',
+    order: 7,
+    number: '7',
     category: 'reference',
     necRef: 'NEC 310.16 / 110.14(C)',
     title: {
@@ -2140,8 +2233,8 @@ const SECTIONS = [
   {
     slug: 'wiring-methods',
     applies: ['residential', 'commercial'],
-    order: 4,
-    number: '4',
+    order: 5,
+    number: '5',
     category: 'reference',
     necRef: 'NEC 310 / 334 / 330',
     title: {
@@ -2312,8 +2405,8 @@ const SECTIONS = [
   {
     slug: 'grounding-bonding',
     applies: ['residential', 'commercial'],
-    order: 8,
-    number: '8',
+    order: 9,
+    number: '9',
     category: 'requirements',
     necRef: 'NEC Article 250',
     title: {
@@ -2469,8 +2562,8 @@ const SECTIONS = [
   {
     slug: 'water-heater',
     applies: ['residential', 'commercial'],
-    order: 13,
-    number: '13',
+    order: 14,
+    number: '14',
     category: 'table',
     necRef: 'NEC Article 422',
     title: {
@@ -2691,6 +2784,31 @@ var DIAGRAMS = {
   'fpl-ibt': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-ibt.png" alt="FPL Figure IV-10 — Intersystem Bonding Termination (IBT)" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-10 · © Florida Power &amp; Light</div>'; },
   'fpl-iv8': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv8.png" alt="FPL Figure IV-8 — self-contained meter installation: 1ph and 3ph meter symbols, delta hi-leg, bypass handles" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-8 · © Florida Power &amp; Light</div>'; },
   'fpl-iv12b': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv12b.png" alt="FPL Figure IV-12b — multiple meter center: dimensions, sealing, barriers, identification" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-12b · © Florida Power &amp; Light</div>'; },
+  'breaker-fails': function(l){
+    var s = '';
+    s += '<line x1="330" y1="18" x2="330" y2="286" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>';
+    function col(cx, good){
+      var c = good ? 'var(--tip)' : 'var(--imp)', bg = good ? 'var(--tip-bg)' : 'var(--imp-bg)';
+      var ac = good ? 'var(--muted)' : c;
+      var r = '';
+      r += '<text x="'+cx+'" y="50" text-anchor="middle" font-size="11" fill="var(--muted)">'+dl(l,'overload / short','sobrecarga / corto')+'</text>';
+      r += '<line x1="'+cx+'" y1="56" x2="'+cx+'" y2="74" stroke="var(--muted)" stroke-width="2"/><path d="M'+(cx-5)+' 70 L'+cx+' 78 L'+(cx+5)+' 70 Z" fill="var(--muted)"/>';
+      r += '<rect x="'+(cx-48)+'" y="82" width="96" height="46" rx="8" fill="'+bg+'" stroke="'+c+'" stroke-width="2"/>';
+      r += '<text x="'+cx+'" y="103" text-anchor="middle" font-size="12" font-weight="800" fill="'+c+'">'+(good?dl(l,'TRIPS · off','DISPARA · off'):dl(l,'does NOT trip','NO dispara'))+'</text>';
+      r += '<text x="'+cx+'" y="119" text-anchor="middle" font-size="9" fill="var(--muted)">'+dl(l,'the breaker','el breaker')+'</text>';
+      r += '<line x1="'+cx+'" y1="128" x2="'+cx+'" y2="146" stroke="'+ac+'" stroke-width="2"/><path d="M'+(cx-5)+' 142 L'+cx+' 150 L'+(cx+5)+' 142 Z" fill="'+ac+'"/>';
+      r += '<text x="'+cx+'" y="168" text-anchor="middle" font-size="11" font-weight="'+(good?'400':'700')+'" fill="'+ac+'">'+(good?dl(l,'wire stays cool','el cable queda frío'):dl(l,'wire overheats','el cable se recalienta'))+'</text>';
+      r += '<circle cx="'+cx+'" cy="214" r="26" fill="'+bg+'" stroke="'+c+'" stroke-width="2"/>';
+      r += good ? '<path d="M'+(cx-13)+' 214 l9 9 l18 -20" fill="none" stroke="'+c+'" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'
+                : '<path d="M'+(cx-11)+' 203 l22 22 M'+(cx+11)+' 203 l-22 22" stroke="'+c+'" stroke-width="4" stroke-linecap="round"/>';
+      r += '<text x="'+cx+'" y="268" text-anchor="middle" font-size="13" font-weight="800" fill="'+c+'">'+(good?dl(l,'SAFE','SEGURO'):dl(l,'FIRE RISK','RIESGO DE INCENDIO'))+'</text>';
+      return r;
+    }
+    s += '<text x="165" y="24" text-anchor="middle" font-size="13" font-weight="800" fill="var(--tip)">'+dl(l,'A good breaker','Un breaker bueno')+'</text>';
+    s += '<text x="495" y="24" text-anchor="middle" font-size="13" font-weight="800" fill="var(--imp)">FPE · Zinsco · Challenger</text>';
+    s += col(165,true) + col(495,false);
+    return '<svg viewBox="0 0 660 286" role="img" aria-label="'+dl(l,'A good breaker trips and keeps you safe; FPE, Zinsco and Challenger breakers often do not, so the wire overheats','Un breaker bueno dispara y protege; los de FPE, Zinsco y Challenger a menudo no, y el cable se recalienta')+'">'+s+'</svg>';
+  },
   'awg-scale': function(l){
     var sizes = [['14',0.064],['12',0.081],['10',0.102],['8',0.128],['6',0.162],['4',0.204],['2',0.258],['1/0',0.325],['2/0',0.365],['4/0',0.460]];
     var scale = 205, gap = 16, baseY = 140, x = 24, parts = [], prevR = 0;
