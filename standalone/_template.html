@@ -539,25 +539,6 @@ var DIAGRAMS = {
   'fpl-mast': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-mast.png" alt="FPL — Service drop attachment to a pipe mast: clearances and mast height table" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-6a · © Florida Power &amp; Light</div>'; },
   'fpl-iv11b': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv11b.png" alt="FPL Figure IV-11b — Buried service lateral: meter socket and down-pipe requirements" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-11b · © Florida Power &amp; Light</div>'; },
   'fpl-ibt': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-ibt.png" alt="FPL Figure IV-10 — Intersystem Bonding Termination (IBT)" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-10 · © Florida Power &amp; Light</div>'; },
-  'fpl-process-flow': function(l){
-    var s = '';
-    function box(x,y,bd,bg,l1,l2){
-      var t='<rect x="'+x+'" y="'+y+'" width="120" height="50" rx="9" fill="'+bg+'" stroke="'+bd+'" stroke-width="1.5"/>';
-      if(l2){ t+='<text x="'+(x+60)+'" y="'+(y+22)+'" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--text)">'+l1+'</text>';
-        t+='<text x="'+(x+60)+'" y="'+(y+36)+'" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--text)">'+l2+'</text>'; }
-      else { t+='<text x="'+(x+60)+'" y="'+(y+29)+'" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--text)">'+l1+'</text>'; }
-      return t;
-    }
-    function arrow(xr,y){ return '<line x1="'+xr+'" y1="'+y+'" x2="'+(xr+12)+'" y2="'+y+'" stroke="var(--muted)" stroke-width="2"/><path d="M'+(xr+10)+' '+(y-4)+' L'+(xr+16)+' '+y+' L'+(xr+10)+' '+(y+4)+' Z" fill="var(--muted)"/>'; }
-    var xs=[8,144,280,416,552];
-    s+='<text x="8" y="16" font-size="11" font-weight="800" fill="var(--tip)">'+dl(l,'CONNECT · new service','CONECTAR · servicio nuevo')+'</text>';
-    var r1=[[dl(l,'Apply to','Solicitar a'),'FPL'],[dl(l,'Install to','Instalar'),dl(l,'standards','a norma')],[dl(l,'Electrical','Inspección'),dl(l,'inspection','eléctrica')],[dl(l,'AHJ releases','AHJ libera'),dl(l,'to FPL','a FPL')],[dl(l,'FPL sets meter','FPL medidor'),dl(l,'— energized','— energiza')]];
-    for(var i=0;i<5;i++){ s+=box(xs[i],26,'var(--tip)','var(--tip-bg)',r1[i][0],r1[i][1]); if(i<4) s+=arrow(xs[i]+120,51); }
-    s+='<text x="8" y="110" font-size="11" font-weight="800" fill="var(--warn)">'+dl(l,'DISCONNECT & RECONNECT · existing service','DESCONECTAR Y RECONECTAR · servicio existente')+'</text>';
-    var r2=[[dl(l,'Request','Solicitar'),dl(l,'disconnect','desconexión')],[dl(l,'FPL pulls','FPL quita'),dl(l,'the meter','el medidor')],[dl(l,'Do the','Hacer el'),dl(l,'work','trabajo')],[dl(l,'Re-inspect','Re-inspección'),dl(l,'(if needed)','(si aplica)')],[dl(l,'FPL resets','FPL reconecta'),dl(l,'& reseals','y resella')]];
-    for(var j=0;j<5;j++){ s+=box(xs[j],120,'var(--warn)','var(--warn-bg)',r2[j][0],r2[j][1]); if(j<4) s+=arrow(xs[j]+120,145); }
-    return '<svg viewBox="0 0 680 184" role="img" aria-label="'+dl(l,'FPL connect and disconnect process','Proceso de conexión y desconexión con FPL')+'">'+s+'</svg>';
-  },
   'fpl-iv8': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv8.png" alt="FPL Figure IV-8 — self-contained meter installation: 1ph and 3ph meter symbols, delta hi-leg, bypass handles" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-8 · © Florida Power &amp; Light</div>'; },
   'fpl-iv12b': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv12b.png" alt="FPL Figure IV-12b — multiple meter center: dimensions, sealing, barriers, identification" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-12b · © Florida Power &amp; Light</div>'; },
   'awg-scale': function(l){

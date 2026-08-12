@@ -262,90 +262,6 @@ export const sections: Section[] = [
     ],
   },
   {
-    slug: 'fpl-connect-disconnect',
-    applies: ['residential', 'commercial'],
-    order: 4,
-    number: '4',
-    category: 'checklist',
-    necRef: 'FPL Builder / Contractor Services',
-    title: {
-      en: 'FPL — Connect & Disconnect Process',
-      es: 'FPL — Proceso de conexión y desconexión',
-    },
-    subtitle: {
-      en: 'How the meter gets energized, and how to disconnect / reconnect for service work.',
-      es: 'Cómo se energiza el medidor y cómo desconectar / reconectar para trabajar en el servicio.',
-    },
-    keywords: ['fpl', 'connect', 'disconnect', 'reconnect', 'meter set', 'meter pull', 'inspection', 'ahj', 'release', 'energize', 'conexión', 'desconexión', 'reconexión', 'inspección', 'proceso'],
-    blocks: [
-      {
-        type: 'paragraph',
-        text: {
-          en: 'Getting a service energized — or disconnected to work on it — is a hand-off between you, the local inspector (AHJ), and FPL. Below is the typical flow. Exact forms, online portals, and lead times change; confirm the current process through FPL Builder/Contractor Services and your local building department.',
-          es: 'Energizar un servicio — o desconectarlo para trabajarlo — es una coordinación entre tú, el inspector local (AHJ) y FPL. Abajo está el flujo típico. Los formularios, portales en línea y tiempos exactos cambian; confirma el proceso vigente con FPL Builder/Contractor Services y tu departamento de construcción local.',
-        },
-      },
-      {
-        type: 'diagram',
-        diagram: 'fpl-process-flow',
-        caption: {
-          en: 'Top: connecting a new service. Bottom: disconnecting and reconnecting an existing one.',
-          es: 'Arriba: conectar un servicio nuevo. Abajo: desconectar y reconectar uno existente.',
-        },
-      },
-      { type: 'heading', text: { en: 'New service — getting connected', es: 'Servicio nuevo — cómo conectarlo' } },
-      {
-        type: 'steps',
-        title: { en: 'From application to energized', es: 'De la solicitud a energizado' },
-        steps: [
-          { en: 'Apply to FPL early (Builder/Contractor Services). Agree on the point of delivery, service voltage/phase, overhead vs underground, and any charges (CIAC, temporary, differential).', es: 'Solicita a FPL temprano (Builder/Contractor Services). Acuerda el punto de entrega, voltaje/fase, aéreo vs subterráneo, y cualquier cargo (CIAC, temporal, diferencial).' },
-          { en: 'Install the service to FPL standards + the NEC. Use the correct meter socket (overhead vs URD) from FPL’s approved list, and set the meter height (5–6 ft).', es: 'Instala el servicio según las normas de FPL + el NEC. Usa la base correcta (aérea vs URD) de la lista aprobada de FPL y la altura del medidor (5–6 ft).' },
-          { en: 'Pull the electrical permit and pass the local electrical inspection.', es: 'Saca el permiso eléctrico y pasa la inspección eléctrica local.' },
-          { en: 'The inspector (AHJ) releases / notifies FPL that the inspection passed — in most Florida jurisdictions this is an electronic release.', es: 'El inspector (AHJ) libera / notifica a FPL que pasó la inspección — en la mayoría de las jurisdicciones de Florida es una liberación electrónica.' },
-          { en: 'FPL connects the service drop/lateral and sets the meter. The service is energized.', es: 'FPL conecta la acometida aérea/subterránea y pone el medidor. El servicio queda energizado.' },
-        ],
-      },
-      { type: 'heading', text: { en: 'Disconnect to work on an existing service', es: 'Desconectar para trabajar en un servicio existente' } },
-      {
-        type: 'callout',
-        kind: 'warning',
-        text: {
-          en: 'Do NOT break FPL’s seal or pull the meter on your own. Tampering with FPL’s meter or seal is illegal and dangerous — call FPL to arrange the disconnect.',
-          es: 'NO rompas el sello de FPL ni quites el medidor por tu cuenta. Manipular el medidor o el sello de FPL es ilegal y peligroso — llama a FPL para coordinar la desconexión.',
-        },
-      },
-      {
-        type: 'steps',
-        title: { en: 'Panel change, meter-can swap, or service upgrade', es: 'Cambio de panel, caja del medidor o upgrade de servicio' },
-        steps: [
-          { en: 'Schedule the work and request a disconnect from FPL (meter pull or service cut) for the agreed time.', es: 'Programa el trabajo y solicita la desconexión a FPL (quitar el medidor o cortar el servicio) para la hora acordada.' },
-          { en: 'FPL disconnects — pulls the meter or cuts the drop / lateral.', es: 'FPL desconecta — quita el medidor o corta la acometida.' },
-          { en: 'Do the work (with the service dead and verified de-energized).', es: 'Haz el trabajo (con el servicio muerto y verificado sin energía).' },
-          { en: 'Pass the re-inspection if the scope requires it (the AHJ releases to FPL again).', es: 'Pasa la re-inspección si el alcance lo requiere (el AHJ vuelve a liberar a FPL).' },
-          { en: 'FPL reconnects, resets the meter, and reseals.', es: 'FPL reconecta, repone el medidor y vuelve a sellar.' },
-        ],
-      },
-      { type: 'heading', text: { en: 'Key rules', es: 'Reglas clave' } },
-      {
-        type: 'list',
-        items: [
-          { en: 'Only FPL breaks its seal and pulls/sets the meter — never energize your own work or backfeed a dead service from a generator.', es: 'Solo FPL rompe su sello y quita/pone el medidor — nunca energices tu propio trabajo ni retroalimentes con un generador un servicio muerto.' },
-          { en: 'FPL will not (re)connect until the inspection is released by the AHJ.', es: 'FPL no (re)conecta hasta que el AHJ libere la inspección.' },
-          { en: 'Give FPL lead time — connects and disconnects are scheduled, not instant.', es: 'Dale tiempo a FPL — las conexiones y desconexiones se programan, no son inmediatas.' },
-          { en: 'Keep the meter and its working space accessible for FPL’s crew.', es: 'Mantén el medidor y su espacio de trabajo accesibles para la cuadrilla de FPL.' },
-        ],
-      },
-      {
-        type: 'callout',
-        kind: 'note',
-        text: {
-          en: 'This is a general field guide to the process — not an FPL procedure document. Confirm the current steps, forms, portals, and lead times with FPL Builder/Contractor Services and your local AHJ.',
-          es: 'Esta es una guía de campo general del proceso — no es un documento de procedimiento de FPL. Confirma los pasos, formularios, portales y tiempos vigentes con FPL Builder/Contractor Services y tu AHJ local.',
-        },
-      },
-    ],
-  },
-  {
     slug: 'service-survey',
     applies: ['residential', 'commercial'],
     order: 1,
@@ -450,8 +366,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-service-sizing',
     applies: ['residential'],
-    order: 6,
-    number: '6',
+    order: 5,
+    number: '5',
     category: 'table',
     necRef: 'NEC 310.12',
     title: {
@@ -496,8 +412,8 @@ export const sections: Section[] = [
   {
     slug: 'gfci-protection',
     applies: ['residential', 'commercial'],
-    order: 10,
-    number: '10',
+    order: 9,
+    number: '9',
     category: 'requirements',
     necRef: 'NEC 210.8',
     title: {
@@ -603,8 +519,8 @@ export const sections: Section[] = [
   {
     slug: 'afci-protection',
     applies: ['residential', 'commercial'],
-    order: 11,
-    number: '11',
+    order: 10,
+    number: '10',
     category: 'requirements',
     necRef: 'NEC 210.12',
     title: {
@@ -705,8 +621,8 @@ export const sections: Section[] = [
   {
     slug: 'smoke-co-alarms',
     applies: ['residential', 'commercial'],
-    order: 18,
-    number: '18',
+    order: 17,
+    number: '17',
     category: 'requirements',
     necRef: 'NFPA 72 Ch. 29',
     title: {
@@ -814,8 +730,8 @@ export const sections: Section[] = [
   {
     slug: 'quick-reference',
     applies: ['residential'],
-    order: 8,
-    number: '8',
+    order: 7,
+    number: '7',
     category: 'reference',
     necRef: 'Quick Reference',
     title: {
@@ -850,8 +766,8 @@ export const sections: Section[] = [
   {
     slug: 'ev-charger',
     applies: ['residential', 'commercial'],
-    order: 16,
-    number: '16',
+    order: 15,
+    number: '15',
     category: 'table',
     necRef: 'NEC Article 625',
     title: {
@@ -904,8 +820,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-receptacles-circuits',
     applies: ['residential'],
-    order: 12,
-    number: '12',
+    order: 11,
+    number: '11',
     category: 'requirements',
     necRef: 'NEC 210.52',
     title: {
@@ -974,8 +890,8 @@ export const sections: Section[] = [
   {
     slug: 'dwelling-load-calc',
     applies: ['residential'],
-    order: 13,
-    number: '13',
+    order: 12,
+    number: '12',
     category: 'table',
     necRef: 'NEC 220',
     title: {
@@ -1028,8 +944,8 @@ export const sections: Section[] = [
   {
     slug: 'pools-spas',
     applies: ['residential', 'commercial'],
-    order: 17,
-    number: '17',
+    order: 16,
+    number: '16',
     category: 'requirements',
     necRef: 'NEC 680',
     title: {
@@ -1116,8 +1032,8 @@ export const sections: Section[] = [
   {
     slug: 'underground-burial',
     applies: ['residential', 'commercial'],
-    order: 15,
-    number: '15',
+    order: 14,
+    number: '14',
     category: 'table',
     necRef: 'NEC 300.5',
     title: {
@@ -1159,8 +1075,8 @@ export const sections: Section[] = [
   {
     slug: 'commercial-conductor-sizing',
     applies: ['commercial'],
-    order: 7,
-    number: '7',
+    order: 6,
+    number: '6',
     category: 'reference',
     necRef: 'NEC 310.16 / 110.14(C)',
     title: {
@@ -1232,8 +1148,8 @@ export const sections: Section[] = [
   {
     slug: 'wiring-methods',
     applies: ['residential', 'commercial'],
-    order: 5,
-    number: '5',
+    order: 4,
+    number: '4',
     category: 'reference',
     necRef: 'NEC 310 / 334 / 330',
     title: {
@@ -1404,8 +1320,8 @@ export const sections: Section[] = [
   {
     slug: 'grounding-bonding',
     applies: ['residential', 'commercial'],
-    order: 9,
-    number: '9',
+    order: 8,
+    number: '8',
     category: 'requirements',
     necRef: 'NEC Article 250',
     title: {
@@ -1561,8 +1477,8 @@ export const sections: Section[] = [
   {
     slug: 'water-heater',
     applies: ['residential', 'commercial'],
-    order: 14,
-    number: '14',
+    order: 13,
+    number: '13',
     category: 'table',
     necRef: 'NEC Article 422',
     title: {
