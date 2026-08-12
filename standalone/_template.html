@@ -541,6 +541,21 @@ var DIAGRAMS = {
   'fpl-ibt': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-ibt.png" alt="FPL Figure IV-10 — Intersystem Bonding Termination (IBT)" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-10 · © Florida Power &amp; Light</div>'; },
   'fpl-iv8': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv8.png" alt="FPL Figure IV-8 — self-contained meter installation: 1ph and 3ph meter symbols, delta hi-leg, bypass handles" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-8 · © Florida Power &amp; Light</div>'; },
   'fpl-iv12b': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv12b.png" alt="FPL Figure IV-12b — multiple meter center: dimensions, sealing, barriers, identification" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-12b · © Florida Power &amp; Light</div>'; },
+  'portable-inlet': function(l){
+    var s = '';
+    s += '<rect x="20" y="84" width="104" height="64" rx="8" fill="var(--surface-2)" stroke="var(--muted)" stroke-width="2"/>';
+    s += '<text x="72" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">'+dl(l,'Portable','Portátil')+'</text><text x="72" y="126" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">'+dl(l,'generator','generador')+'</text>';
+    s += '<text x="72" y="166" text-anchor="middle" font-size="9" fill="var(--imp)">'+dl(l,'outside · away from','afuera · lejos de')+'</text><text x="72" y="178" text-anchor="middle" font-size="9" fill="var(--imp)">'+dl(l,'openings (CO)','aberturas (CO)')+'</text>';
+    s += '<line x1="124" y1="116" x2="196" y2="116" stroke="var(--text)" stroke-width="2"/><text x="160" y="108" text-anchor="middle" font-size="9" fill="var(--muted)">'+dl(l,'cord','cable')+'</text>';
+    s += '<rect x="196" y="96" width="46" height="40" rx="5" fill="var(--surface)" stroke="var(--brand)" stroke-width="2"/><circle cx="219" cy="116" r="8" fill="none" stroke="var(--brand)"/><text x="219" y="150" text-anchor="middle" font-size="9" fill="var(--muted)">'+dl(l,'inlet box','entrada')+'</text>';
+    s += '<line x1="242" y1="116" x2="310" y2="116" stroke="var(--text)" stroke-width="2"/>';
+    s += '<rect x="310" y="50" width="150" height="140" rx="8" fill="var(--surface)" stroke="var(--brand)" stroke-width="2"/><text x="385" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="var(--brand-strong)">'+dl(l,'Load center','Panel')+'</text>';
+    s += '<rect x="326" y="64" width="118" height="24" rx="4" fill="var(--surface-2)" stroke="var(--muted)"/><text x="385" y="80" text-anchor="middle" font-size="10" fill="var(--text)">'+dl(l,'MAIN (utility)','MAIN (red)')+'</text>';
+    s += '<rect x="356" y="96" width="58" height="44" rx="4" fill="var(--brand-soft)" stroke="var(--brand)"/><text x="385" y="114" text-anchor="middle" font-size="9" font-weight="700" fill="var(--brand-strong)">'+dl(l,'listed','inter-')+'</text><text x="385" y="126" text-anchor="middle" font-size="9" font-weight="700" fill="var(--brand-strong)">'+dl(l,'interlock','bloqueo')+'</text>';
+    s += '<rect x="326" y="150" width="118" height="24" rx="4" fill="var(--surface-2)" stroke="var(--muted)"/><text x="385" y="166" text-anchor="middle" font-size="10" fill="var(--text)">'+dl(l,'GENERATOR','GENERADOR')+'</text>';
+    s += '<text x="240" y="210" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--imp)">'+dl(l,'Only MAIN or GENERATOR on — never both','Solo MAIN o GENERADOR — nunca ambos')+'</text>';
+    return '<svg viewBox="0 0 480 224" role="img" aria-label="'+dl(l,'Portable generator via a power inlet and a listed panel interlock','Generador portátil por entrada de energía e interbloqueo listado en el panel')+'">'+s+'</svg>';
+  },
   'breaker-fails': function(l){
     var s = '';
     s += '<line x1="330" y1="18" x2="330" y2="286" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>';

@@ -1347,6 +1347,133 @@ const SECTIONS = [
     ],
   },
   {
+    slug: 'generator-install',
+    applies: ['residential', 'commercial'],
+    order: 17,
+    number: '17',
+    category: 'requirements',
+    necRef: 'NEC 702 / 445 / 250',
+    title: {
+      en: 'Generator Installation',
+      es: 'Instalación de generadores',
+    },
+    subtitle: {
+      en: 'Portable and permanent standby — transfer, grounding, clearances, and safety.',
+      es: 'Portátil y respaldo permanente — transferencia, tierra, distancias y seguridad.',
+    },
+    keywords: ['generator', 'standby', 'transfer switch', 'ats', 'interlock', 'backfeed', 'portable', 'inlet', '702', '445', 'separately derived', 'neutral', 'generador', 'respaldo', 'transferencia', 'interbloqueo', 'co'],
+    blocks: [
+      {
+        type: 'paragraph',
+        text: {
+          en: 'Generators come in two forms: portable (cord → power inlet → interlock) and permanent standby (an automatic transfer switch). Either way, the #1 rule is transfer equipment so the generator and the utility can NEVER be connected at the same time — backfeed can electrocute a lineman and destroy the generator when the utility returns. Covered by NEC Article 702 (optional standby systems), 445 (the generator itself), and 250 (grounding).',
+          es: 'Los generadores vienen en dos formas: portátil (cable → entrada de energía → interbloqueo) y respaldo permanente (transferencia automática). En ambos casos, la regla #1 es el equipo de transferencia para que el generador y la red NUNCA queden conectados al mismo tiempo — el backfeed puede electrocutar a un liniero y destruir el generador cuando regresa la red. Lo cubre el NEC Artículo 702 (sistemas de respaldo opcionales), 445 (el generador) y 250 (puesta a tierra).',
+        },
+      },
+      { type: 'heading', text: { en: 'The golden rule: transfer equipment, no backfeed', es: 'La regla de oro: transferencia, sin backfeed' } },
+      {
+        type: 'paragraph',
+        text: {
+          en: 'NEC 702.6 requires listed transfer equipment that prevents any inadvertent interconnection of the generator and the utility. Your options: an automatic transfer switch (ATS), a manual transfer switch, or a listed generator interlock kit on the panel. NEVER a “suicide cord” (double-male plug) into a receptacle — it is illegal and deadly.',
+          es: 'El NEC 702.6 exige equipo de transferencia listado que impida cualquier interconexión accidental del generador con la red. Tus opciones: transferencia automática (ATS), transferencia manual, o un kit de interbloqueo listado en el panel. NUNCA un “cable suicida” (enchufe doble macho) en un receptáculo — es ilegal y mortal.',
+        },
+      },
+      {
+        type: 'diagram',
+        diagram: 'generator-transfer',
+        caption: {
+          en: 'Transfer equipment feeds the panel from the utility OR the generator — never both at once.',
+          es: 'La transferencia alimenta el panel desde la red O el generador — nunca ambos a la vez.',
+        },
+      },
+      { type: 'heading', text: { en: 'Portable generators', es: 'Generadores portátiles' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Run it OUTSIDE only — well away from windows, doors, and vents. Carbon monoxide (CO) kills; never run one in a garage or enclosed space, even with the door open.', es: 'Úsalo SOLO afuera — bien lejos de ventanas, puertas y rejillas. El monóxido de carbono (CO) mata; nunca lo uses en un garaje o espacio cerrado, aunque la puerta esté abierta.' },
+          { en: 'Connect through a power inlet box + a listed generator interlock kit on the load center (or a manual transfer switch / subpanel). Never backfeed a dryer or range outlet with a cord.', es: 'Conéctalo por una caja de entrada de energía + un kit de interbloqueo listado en el panel (o una transferencia manual / subpanel). Nunca retroalimentes por una toma de secadora o estufa con un cable.' },
+          { en: 'Size the inlet, cord, and generator breaker to the generator output. Use the generator’s GFCI outlets.', es: 'Dimensiona la entrada, el cable y el breaker del generador según la salida del generador. Usa las tomas GFCI del generador.' },
+          { en: 'Neutral: match the generator (floating vs bonded neutral) to your transfer method — see “Grounding & the neutral” below.', es: 'Neutro: haz coincidir el generador (neutro flotante vs unido) con tu método de transferencia — ve “Puesta a tierra y el neutro” abajo.' },
+        ],
+      },
+      {
+        type: 'diagram',
+        diagram: 'portable-inlet',
+        caption: {
+          en: 'Portable generator → power inlet box → a listed interlock so only the main OR the generator breaker can be on.',
+          es: 'Generador portátil → caja de entrada → un interbloqueo listado para que solo el main O el breaker del generador estén encendidos.',
+        },
+      },
+      { type: 'heading', text: { en: 'Permanent standby (automatic)', es: 'Respaldo permanente (automático)' } },
+      {
+        type: 'steps',
+        title: { en: 'Installing an air-cooled standby set', es: 'Instalar un generador de respaldo enfriado por aire' },
+        steps: [
+          { en: 'Set it on a level concrete or composite pad, per the manufacturer.', es: 'Colócalo en una losa de concreto o compuesta a nivel, según el fabricante.' },
+          { en: 'Clearances: follow the unit’s LISTED clearances (commonly ~18 in from the wall; 5 ft from doors, windows, and fresh-air intakes; keep 3 ft of service access) and NFPA 37. Point the exhaust away from openings.', es: 'Distancias: sigue las distancias LISTADAS del equipo (típico ~18 in de la pared; 5 ft de puertas, ventanas y tomas de aire; deja 3 ft de acceso de servicio) y NFPA 37. Dirige el escape lejos de aberturas.' },
+          { en: 'Wire in the Automatic Transfer Switch (ATS): whole-house, with load management (load-shed), or feeding an essential-loads subpanel.', es: 'Conecta la transferencia automática (ATS): casa completa, con manejo de cargas (load-shed), o alimentando un subpanel de cargas esenciales.' },
+          { en: 'Provide the generator disconnect and overcurrent (445.18). Size the output conductors at ≥ 115% of the nameplate current (445.13).', es: 'Provee la desconexión y protección del generador (445.18). Dimensiona los conductores de salida a ≥ 115% de la corriente de placa (445.13).' },
+          { en: 'Fuel (natural gas or LP): add a gas shutoff and size the gas line for the unit’s BTU load; coordinate with the gas contractor.', es: 'Combustible (gas natural o LP): agrega un corte de gas y dimensiona la línea para la carga en BTU del equipo; coordina con el contratista de gas.' },
+        ],
+      },
+      { type: 'heading', text: { en: 'Grounding & the neutral (the tricky part)', es: 'Puesta a tierra y el neutro (lo complicado)' } },
+      {
+        type: 'paragraph',
+        text: {
+          en: 'Whether the generator is a separately derived system — and therefore whether you bond the neutral at the generator — depends on ONE thing: does the transfer switch switch the neutral?',
+          es: 'Si el generador es un sistema derivado por separado — y por tanto si unes el neutro en el generador — depende de UNA cosa: ¿la transferencia conmuta el neutro?',
+        },
+      },
+      {
+        type: 'comparison',
+        title: { en: 'Neutral bonding by transfer type', es: 'Unión del neutro por tipo de transferencia' },
+        columns: [
+          { en: '3-pole — neutral solid (not switched)', es: '3 polos — neutro sólido (no conmuta)' },
+          { en: '4-pole — neutral switched', es: '4 polos — neutro conmutado' },
+        ],
+        rows: [
+          { label: { en: 'Separately derived?', es: '¿Derivado por separado?' }, cells: [ { en: 'No', es: 'No' }, { en: 'Yes', es: 'Sí' } ] },
+          { label: { en: 'Neutral–ground bond', es: 'Unión neutro–tierra' }, cells: [ { en: 'ONLY at the service (remove/verify the generator’s bonding jumper; use a floating-neutral portable)', es: 'SOLO en la acometida (quita/verifica el puente del generador; usa portátil de neutro flotante)' }, { en: 'At the generator (bonded-neutral)', es: 'En el generador (neutro unido)' } ] },
+          { label: { en: 'Grounding electrode at gen?', es: '¿Electrodo de tierra en el gen?' }, cells: [ { en: 'No — uses the service ground', es: 'No — usa la tierra de la acometida' }, { en: 'Yes — provide one (250.30)', es: 'Sí — provee uno (250.30)' } ] },
+          { label: { en: 'Typical use', es: 'Uso típico' }, cells: [ { en: 'Interlocks and most home ATS', es: 'Interbloqueos y la mayoría de ATS de casa' }, { en: 'Where the neutral must be isolated', es: 'Donde el neutro debe aislarse' } ] },
+        ],
+      },
+      { type: 'heading', text: { en: 'Sizing & capacity (702.4)', es: 'Dimensionamiento y capacidad (702.4)' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Size the generator to the load you will actually run. Load management (load-shed) lets a smaller unit back up a whole house.', es: 'Dimensiona el generador a la carga que realmente vas a usar. El manejo de cargas (load-shed) deja que un equipo más chico respalde toda la casa.' },
+          { en: 'Automatic systems: capacity for the full load, OR use load management. Manual systems: capacity for the loads you will switch on.', es: 'Sistemas automáticos: capacidad para toda la carga, O usa manejo de cargas. Sistemas manuales: capacidad para las cargas que vas a encender.' },
+        ],
+      },
+      { type: 'heading', text: { en: 'Signs, permits & inspection', es: 'Señalización, permiso e inspección' } },
+      {
+        type: 'list',
+        items: [
+          { en: 'Post a sign at the service disconnect indicating there is an on-site optional standby source and where it is (702.7).', es: 'Coloca un letrero en la desconexión de la acometida indicando que hay una fuente de respaldo opcional en sitio y dónde está (702.7).' },
+          { en: 'Pull the electrical permit (and gas/mechanical if applicable) and pass inspection.', es: 'Saca el permiso eléctrico (y de gas/mecánico si aplica) y pasa la inspección.' },
+          { en: 'Notify the utility (FPL) — the transfer equipment protects their crews; some require notice for on-site generation.', es: 'Notifica a la compañía (FPL) — el equipo de transferencia protege a sus cuadrillas; algunas requieren aviso de generación en sitio.' },
+        ],
+      },
+      {
+        type: 'callout',
+        kind: 'warning',
+        text: {
+          en: 'The two ways generators kill: (1) CO — never run a portable indoors or in a garage. (2) Backfeed — never connect a generator without a listed transfer switch or interlock; a “suicide cord” energizes the utility line and can kill a lineman.',
+          es: 'Las dos formas en que los generadores matan: (1) CO — nunca uses un portátil adentro ni en un garaje. (2) Backfeed — nunca conectes un generador sin transferencia o interbloqueo listado; un “cable suicida” energiza la línea de la red y puede matar a un liniero.',
+        },
+      },
+      {
+        type: 'callout',
+        kind: 'tip',
+        text: {
+          en: 'Quick recap: outside (portable) · transfer switch or listed interlock · match the neutral bond to the transfer type · manufacturer clearances · sign at the panel · permit + inspection.',
+          es: 'Resumen: afuera (portátil) · transferencia o interbloqueo listado · unir el neutro según el tipo de transferencia · distancias del fabricante · letrero en el panel · permiso + inspección.',
+        },
+      },
+    ],
+  },
+  {
     slug: 'service-survey',
     applies: ['residential', 'commercial'],
     order: 1,
@@ -1706,8 +1833,8 @@ const SECTIONS = [
   {
     slug: 'smoke-co-alarms',
     applies: ['residential', 'commercial'],
-    order: 18,
-    number: '18',
+    order: 19,
+    number: '19',
     category: 'requirements',
     necRef: 'NFPA 72 Ch. 29',
     title: {
@@ -2029,8 +2156,8 @@ const SECTIONS = [
   {
     slug: 'pools-spas',
     applies: ['residential', 'commercial'],
-    order: 17,
-    number: '17',
+    order: 18,
+    number: '18',
     category: 'requirements',
     necRef: 'NEC 680',
     title: {
@@ -2784,6 +2911,21 @@ var DIAGRAMS = {
   'fpl-ibt': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-ibt.png" alt="FPL Figure IV-10 — Intersystem Bonding Termination (IBT)" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-10 · © Florida Power &amp; Light</div>'; },
   'fpl-iv8': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv8.png" alt="FPL Figure IV-8 — self-contained meter installation: 1ph and 3ph meter symbols, delta hi-leg, bypass handles" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-8 · © Florida Power &amp; Light</div>'; },
   'fpl-iv12b': function(l){ return '<div class="fpl-fig"><img src="fpl/fig-iv12b.png" alt="FPL Figure IV-12b — multiple meter center: dimensions, sealing, barriers, identification" loading="lazy"/></div><div class="fpl-src">FPL Electric Service Standards · Fig. IV-12b · © Florida Power &amp; Light</div>'; },
+  'portable-inlet': function(l){
+    var s = '';
+    s += '<rect x="20" y="84" width="104" height="64" rx="8" fill="var(--surface-2)" stroke="var(--muted)" stroke-width="2"/>';
+    s += '<text x="72" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">'+dl(l,'Portable','Portátil')+'</text><text x="72" y="126" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">'+dl(l,'generator','generador')+'</text>';
+    s += '<text x="72" y="166" text-anchor="middle" font-size="9" fill="var(--imp)">'+dl(l,'outside · away from','afuera · lejos de')+'</text><text x="72" y="178" text-anchor="middle" font-size="9" fill="var(--imp)">'+dl(l,'openings (CO)','aberturas (CO)')+'</text>';
+    s += '<line x1="124" y1="116" x2="196" y2="116" stroke="var(--text)" stroke-width="2"/><text x="160" y="108" text-anchor="middle" font-size="9" fill="var(--muted)">'+dl(l,'cord','cable')+'</text>';
+    s += '<rect x="196" y="96" width="46" height="40" rx="5" fill="var(--surface)" stroke="var(--brand)" stroke-width="2"/><circle cx="219" cy="116" r="8" fill="none" stroke="var(--brand)"/><text x="219" y="150" text-anchor="middle" font-size="9" fill="var(--muted)">'+dl(l,'inlet box','entrada')+'</text>';
+    s += '<line x1="242" y1="116" x2="310" y2="116" stroke="var(--text)" stroke-width="2"/>';
+    s += '<rect x="310" y="50" width="150" height="140" rx="8" fill="var(--surface)" stroke="var(--brand)" stroke-width="2"/><text x="385" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="var(--brand-strong)">'+dl(l,'Load center','Panel')+'</text>';
+    s += '<rect x="326" y="64" width="118" height="24" rx="4" fill="var(--surface-2)" stroke="var(--muted)"/><text x="385" y="80" text-anchor="middle" font-size="10" fill="var(--text)">'+dl(l,'MAIN (utility)','MAIN (red)')+'</text>';
+    s += '<rect x="356" y="96" width="58" height="44" rx="4" fill="var(--brand-soft)" stroke="var(--brand)"/><text x="385" y="114" text-anchor="middle" font-size="9" font-weight="700" fill="var(--brand-strong)">'+dl(l,'listed','inter-')+'</text><text x="385" y="126" text-anchor="middle" font-size="9" font-weight="700" fill="var(--brand-strong)">'+dl(l,'interlock','bloqueo')+'</text>';
+    s += '<rect x="326" y="150" width="118" height="24" rx="4" fill="var(--surface-2)" stroke="var(--muted)"/><text x="385" y="166" text-anchor="middle" font-size="10" fill="var(--text)">'+dl(l,'GENERATOR','GENERADOR')+'</text>';
+    s += '<text x="240" y="210" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--imp)">'+dl(l,'Only MAIN or GENERATOR on — never both','Solo MAIN o GENERADOR — nunca ambos')+'</text>';
+    return '<svg viewBox="0 0 480 224" role="img" aria-label="'+dl(l,'Portable generator via a power inlet and a listed panel interlock','Generador portátil por entrada de energía e interbloqueo listado en el panel')+'">'+s+'</svg>';
+  },
   'breaker-fails': function(l){
     var s = '';
     s += '<line x1="330" y1="18" x2="330" y2="286" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>';
