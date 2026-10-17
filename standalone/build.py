@@ -18,7 +18,7 @@ import re
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 DATA = os.path.join(ROOT, "server", "src", "data")
-LOGO = os.path.join(ROOT, "client", "public", "xlectrical-logo.png")
+LOGO = os.path.join(HERE, "nec-lockup.png")  # Xlectrical wordmark + "NEC GUIDE" lockup (tools/make_lockup.py)
 WEB = os.path.join(ROOT, "web")  # installable PWA build (host this folder)
 
 
@@ -72,8 +72,8 @@ def main():
         "<link rel=\"manifest\" href=\"manifest.webmanifest\" />\n"
         # ?v=2 busts iOS's very sticky apple-touch-icon cache so re-adding to the
         # home screen picks up the new logo. Bump the number when the icon changes.
-        "<link rel=\"icon\" href=\"icons/icon-192.png?v=2\" />\n"
-        "<link rel=\"apple-touch-icon\" href=\"icons/apple-touch-icon.png?v=2\" />\n"
+        "<link rel=\"icon\" href=\"icons/icon-192.png?v=3\" />\n"
+        "<link rel=\"apple-touch-icon\" href=\"icons/apple-touch-icon.png?v=3\" />\n"
         "<meta name=\"mobile-web-app-capable\" content=\"yes\" />\n"
         "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n"
         # 'default' keeps the status bar readable in BOTH light and dark themes

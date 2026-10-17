@@ -83,7 +83,7 @@
   }
   .content { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
   .brand { display: flex; align-items: center; gap: 10px; padding: 18px 18px 10px; }
-  .brand img { height: 30px; width: auto; }
+  .brand img { height: 46px; width: auto; }
   .brand .sub { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
   .nav { padding: 8px 10px 24px; display: flex; flex-direction: column; gap: 2px; }
   .nav .group { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
@@ -339,9 +339,8 @@
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <div class="brand">
-      <img src="__LOGO_DATA_URI__" alt="Xlectrical" />
+      <img src="__LOGO_DATA_URI__" alt="Xlectrical NEC Guide" />
     </div>
-    <div style="padding:0 18px"><span class="sub" id="brand-sub">NEC Field Reference</span></div>
     <nav class="nav" id="nav"></nav>
   </aside>
 
@@ -1166,7 +1165,6 @@ function applyChrome(){
   document.getElementById("search").placeholder = ui().search;
   document.getElementById("disclaimer").textContent = ui().disclaimer;
   document.getElementById("rights").textContent = ui().rights;
-  document.getElementById("brand-sub").textContent = ui().tagline;
   var lt = document.getElementById("langToggle");
   Array.prototype.forEach.call(lt.querySelectorAll("button"), function(btn){
     btn.classList.toggle("on", btn.getAttribute("data-lang")===LANG);
