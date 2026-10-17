@@ -21,45 +21,8 @@
     --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0f1216;
-      --surface: #171b21;
-      --surface-2: #1f242c;
-      --border: #2a303a;
-      --text: #e7eaee;
-      --muted: #98a0ac;
-      --brand: #a78bfa;
-      --brand-strong: #8b5cf6;
-      --brand-soft: #241f36;
-      --accent: #fbbf24;
-      --accent-2: #fcd34d;
-      --ring: rgba(167, 139, 250, 0.35);
-      --tip: #4ade80;   --tip-bg: #11241a;   --tip-bd: #1f4a30;
-      --note: #93b4fc;  --note-bg: #141c2e;  --note-bd: #26406e;
-      --warn: #fbbf24;  --warn-bg: #251d10;  --warn-bd: #463514;
-      --imp: #f472b6;   --imp-bg: #281320;   --imp-bd: #4a2036;
-      --hl-bg: #0f2318; --hl-bd: #1e5033;    --hl-tx: #6ee7a0;
-      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
-    }
-  }
-  :root[data-theme="light"] {
-    --bg: #f4f5f7; --surface: #ffffff; --surface-2: #eceef1; --border: #dfe2e7;
-    --text: #191c22; --muted: #5e6572; --brand: #7c3aed; --brand-strong: #6d28d9;
-    --brand-soft: #f1ecfd; --accent: #f59e0b; --accent-2: #fbbf24; --ring: rgba(124,58,237,.28);
-    --tip:#15803d;--tip-bg:#eefaf1;--tip-bd:#bfe8cc;--note:#1d4ed8;--note-bg:#eef3fe;--note-bd:#cdddfb;
-    --warn:#b45309;--warn-bg:#fdf5e7;--warn-bd:#f4dfae;--imp:#be185d;--imp-bg:#fdeef5;--imp-bd:#f6c9dd;
-    --hl-bg:#ecfdf3;--hl-bd:#b6e6c6;--hl-tx:#14663a;
-    --shadow: 0 1px 2px rgba(15,20,30,.05), 0 8px 24px -14px rgba(20,25,40,.16);
-  }
-  :root[data-theme="dark"] {
-    --bg:#0f1216;--surface:#171b21;--surface-2:#1f242c;--border:#2a303a;--text:#e7eaee;--muted:#98a0ac;
-    --brand:#a78bfa;--brand-strong:#8b5cf6;--brand-soft:#241f36;--accent:#fbbf24;--accent-2:#fcd34d;--ring:rgba(167,139,250,.35);
-    --tip:#4ade80;--tip-bg:#11241a;--tip-bd:#1f4a30;--note:#93b4fc;--note-bg:#141c2e;--note-bd:#26406e;
-    --warn:#fbbf24;--warn-bg:#251d10;--warn-bd:#463514;--imp:#f472b6;--imp-bg:#281320;--imp-bd:#4a2036;
-    --hl-bg:#0f2318;--hl-bd:#1e5033;--hl-tx:#6ee7a0;
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
-  }
+  /* Light theme only — no dark mode. The app stays light even when the phone
+     is in dark mode (same as the Quick Estimator). */
 
   * { box-sizing: border-box; }
   html, body { margin: 0; height: 100%; }
@@ -360,9 +323,6 @@
       <div class="lang-toggle" id="langToggle" title="Language">
         <button data-lang="en">EN</button><button data-lang="es">ES</button>
       </div>
-      <button class="icon-btn" id="themeBtn" aria-label="Theme">
-        <svg id="themeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
-      </button>
     </header>
 
     <main id="view"></main>
@@ -1182,18 +1142,6 @@ function syncThemeColor(){
     m.setAttribute("content", bg);
   }catch(e){}
 }
-function initTheme(){
-  var saved; try{ saved = localStorage.getItem("xlectrical.theme"); }catch(e){}
-  if(saved){ document.documentElement.setAttribute("data-theme", saved); }
-  syncThemeColor();
-}
-function toggleTheme(){
-  var cur = document.documentElement.getAttribute("data-theme");
-  var next = cur==="dark" ? "light" : (cur==="light" ? "dark" : (matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "dark"));
-  document.documentElement.setAttribute("data-theme", next);
-  try{ localStorage.setItem("xlectrical.theme", next); }catch(e){}
-  syncThemeColor();
-}
 
 /* ===== Sidebar (mobile) ===== */
 function openSidebar(){ document.getElementById("sidebar").classList.add("open"); document.getElementById("backdrop").classList.add("show"); }
@@ -1211,7 +1159,6 @@ document.addEventListener("click", function(e){
   if(e.target.closest("[data-close-results]")){ var box=document.getElementById("results"); box.hidden=true; document.getElementById("search").value=""; }
   if(e.target.closest("#menuBtn")){ openSidebar(); }
   if(e.target.closest("#backdrop")){ closeSidebar(); }
-  if(e.target.closest("#themeBtn")){ toggleTheme(); }
   var lb = e.target.closest ? e.target.closest("#langToggle button") : null;
   if(lb){ setLang(lb.getAttribute("data-lang")); }
   var ab = e.target.closest ? e.target.closest(".seg button[data-aud]") : null;
@@ -1255,7 +1202,7 @@ document.addEventListener("focusout", function(e){
 window.addEventListener("hashchange", render);
 
 /* ===== Boot ===== */
-initTheme();
+syncThemeColor();
 applyChrome();
 render();
 </script>

@@ -68,7 +68,7 @@ def main():
     pwa_head = (
         # theme-color matches the app background (dark by default); the app also
         # updates it live on theme toggle so the phone status bar always matches.
-        "<meta name=\"theme-color\" content=\"#0f1216\" />\n"
+        "<meta name=\"theme-color\" content=\"#f4f5f7\" />\n"
         "<link rel=\"manifest\" href=\"manifest.webmanifest\" />\n"
         # ?v=2 busts iOS's very sticky apple-touch-icon cache so re-adding to the
         # home screen picks up the new logo. Bump the number when the icon changes.
