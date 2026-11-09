@@ -58,6 +58,7 @@ def main():
         "<meta charset=\"utf-8\" />\n"
         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n"
         "<title>Xlectrical &middot; NEC Field Reference</title>\n"
+        "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"48x48\" />\n"
         "</head>\n<body>\n" + core + "\n</body>\n</html>\n"
     )
     with open(os.path.join(HERE, "index.html"), "w", encoding="utf-8") as f:
@@ -72,7 +73,8 @@ def main():
         "<link rel=\"manifest\" href=\"manifest.webmanifest\" />\n"
         # ?v=2 busts iOS's very sticky apple-touch-icon cache so re-adding to the
         # home screen picks up the new logo. Bump the number when the icon changes.
-        "<link rel=\"icon\" href=\"icons/icon-192.png?v=3\" />\n"
+        "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"48x48\" />\n"
+        "<link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"icons/icon-192.png?v=3\" />\n"
         "<link rel=\"apple-touch-icon\" href=\"icons/apple-touch-icon.png?v=3\" />\n"
         "<meta name=\"mobile-web-app-capable\" content=\"yes\" />\n"
         "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n"
